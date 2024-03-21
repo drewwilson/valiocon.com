@@ -1,0 +1,314 @@
+html, body {
+	margin: 0;
+}
+
+body { 
+	font-family: "Helvetica", helvetica, sans-serif;
+	font-size: 14px;
+	color: #fff;
+	background-color: #1c1f27;
+	-webkit-font-smoothing: antialiased;
+}
+
+a { 
+	text-decoration: none;
+	transition: color .25s ease-out;
+	-webkit-transition: color .25s ease-out;
+	-moz-transition: color .25s ease-out;
+	outline: none;
+}
+
+area {
+	outline: none;
+}
+
+ul, dl {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+section {
+	display: block;
+	margin: 0 auto;
+	width: 840px;
+	min-width: 964px;
+}
+
+section.full {
+	width: inherit;
+}
+
+h2 {
+	margin: 0;
+	padding: 0;
+	font-size: 30px;
+	font-family: "SignalNo1D";
+	font-weight: normal;
+}
+
+#logo {
+	padding-top: 70px;
+	background: transparent url(../2012_site/images/bg1.jpg) no-repeat center bottom;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+#logo h1 {
+	width: 425px;
+	height: 258px;
+	margin: 0 auto 80px auto;
+	padding: 0;
+	text-indent: -99999px;
+	background: transparent url(../2012_site/images/sprite.png) no-repeat -966px 0px;
+}
+
+a.regnow {
+	display: block;
+	width: 207px;
+	height: 49px;
+	margin: 0 auto;
+	text-indent: -99999px;
+	background: transparent url(../2012_site/images/sprite.png) no-repeat -966px -260px;
+}
+
+a.regnow:active {
+	background-position: -1175px -260px;
+}
+
+#desc {
+	text-align: center;
+	margin: 80px 0;
+	padding: 26px 0;
+	border-bottom: 1px solid #33363d;
+	border-top: 1px solid #33363d;
+}
+
+#desc h2 {
+	font-size: 50px;
+}
+
+#desc p {
+	opacity: 0.5;
+}
+
+#top_links {
+	text-align: center;
+}
+
+#top_links a {
+	margin: 0 50px;
+	color: #fff;
+}
+
+#sponsors {
+	margin: 60px auto 100px auto;
+	text-align: center;
+}
+
+#sponsors p {
+	margin: 10px auto 60px auto;
+	opacity: 0.5;
+	font-size: 12px;
+}
+
+#sponsors p a {
+	color: #fff;
+}
+
+#videos .video, #videos .artist {
+	position: relative;
+	background-color: #fff;
+	width: 800px;
+	margin: 40px auto 100px auto;
+	padding: 20px;
+}
+
+#videos .video .perma, #videos .artist .perma {
+	position: absolute;
+	display: none;
+	margin-left: -40px;
+	background-color: #fff;
+	padding: 7px 6px 2px 5px;
+	font-size: 24px;
+	font-family: "Pictos Custom";
+	color: #1c1f27;
+	border-radius: 2px;
+}
+
+#videos .video:hover .perma, #videos .artist:hover .perma {
+	display: block;
+}
+
+#videos .video .meta {
+	float: left;
+	width: 360px;
+}
+
+#videos .video .slides {
+	width: 430px;
+	margin: 20px 0 0 370px;
+	min-height: 330px;
+}
+
+#videos .video .slides.empty {
+	background-color: #eee;
+	text-align: center;
+}
+
+#videos .video .slides.empty a {
+	color: #1c1f27;
+}
+
+#videos .video .meta {
+	position: relative;
+	float: left;
+	margin: 20px 0 0 0;
+	padding: 0;
+	width: 280px;
+	height: 325px;
+	color: #1c1f27;
+	background-repeat: no-repeat;
+	background-position: left 45px;
+	background-image: url(../2012_site/images/speaker-sprite2.jpg);
+}
+
+#videos .video .meta.cameron {
+	background-position: -280px 45px;
+}
+#videos .video .meta.ian {
+	background-position: -560px 45px;
+}
+#videos .video .meta.kyle {
+	background-position: -840px 45px;
+}
+#videos .video .meta.garrett {
+	background-position: -1120px 45px;
+}
+#videos .video .meta.krystyn {
+	background-position: -1400px 45px;
+}
+#videos .video .meta.jonathan {
+	background-position: -1680px 45px;
+}
+#videos .video .meta.david {
+	background-position: -1960px 45px;
+}
+#videos .video .meta.dom {
+	background-position: -2240px 45px;
+}
+#videos .video .meta.mott {
+	background-position: -2520px 45px;
+}
+#videos .video .meta.jeff {
+	background-position: -2800px 45px;
+}
+#videos .video .meta.amir {
+	background-position: -3080px 45px;
+}
+#videos .video .meta.dann {
+	background-position: -3360px 45px;
+}
+#videos .video .meta.rhett {
+	background-position: -3640px 45px;
+}
+#videos .video .meta.alex {
+	background-position: -3920px 45px;
+}
+
+#videos .video .meta h3, #videos .artist .meta h3 {
+	margin: 0;
+	padding: 0;
+	font-size: 24px;
+	text-align: center;
+	text-transform: uppercase;
+	font-family: "SignalNo1D";
+	font-weight: normal;
+	color: #1c1f27;
+}
+
+#videos .video .meta .links {
+	position: absolute;
+	top: 287px;
+	width: 280px;
+	text-align: center;
+}
+
+#videos .video .meta .links a {
+	display: inline-block;
+	margin: 0 25px;
+	color: #1c1f27;
+}
+
+#videos .video .meta.light .links a {
+	color: #fff;
+}
+
+#videos .video .meta .links span, #videos .artist .meta .links span {
+	display: none;
+}
+
+#videos .video .meta .links a:before, #videos .artist .meta .links a:before {
+	display: block;
+	content: "n";
+	font-size: 34px;
+	font-family: "Pictos Custom";
+	text-indent: inherit;
+	line-height: 1em;
+}
+
+#videos .video .meta .links a.twitter:before, #videos .artist .meta .links a.twitter:before {
+	content: "t";
+}
+
+#videos .artist .meta {
+	margin: 20px 0 0 0;
+	background-color: rgba(255,255,255,0.7);
+}
+
+#videos .artist .meta .links {
+	float: right;
+	margin-top: -26px;
+}
+
+#videos .artist .meta .links a {
+	text-align: right;
+	margin: 0 25px;
+	color: #1c1f27;
+}
+
+#videos .artist .meta h3 {
+	text-align: left;
+}
+
+#videos .artist .meta h3 span {
+	color: #a4abbe;
+	font-size: 18px;
+	margin-left: 10px;
+}
+
+
+footer {
+	position: relative;
+	width: 840px;
+	margin: 0 auto;
+	padding: 0 62px 30px 62px;
+	color: #828592;
+	font-size: 12px;
+}
+
+footer a {
+	color: #fff;
+}
+
+footer .right {
+	position: absolute;
+	top: 0;
+	right: 62px;
+}
+
+footer .right a {
+	margin-left: 40px;
+}

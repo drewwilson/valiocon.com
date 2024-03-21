@@ -1,0 +1,123 @@
+html, body {
+	margin: 0;
+	background-color: transparent;
+	min-height: 100%;
+	height: 100%;
+	font-family: "Courier New", "Courier", monospace;
+	color: #0e1824;
+}
+
+html {
+	background: #f9f9f9 url(../images/bg.jpg) no-repeat center bottom fixed;	
+	-webkit-background-size: 100% auto;
+	-moz-background-size: 100% auto;
+	background-size: 100% auto;	
+}
+
+section {
+	display: block;
+	width: 470px;
+	margin: 0 auto;
+}
+
+h1 {
+	margin: 0 auto 10px auto;
+	padding: 0;
+	width: 470px;
+	height: 354px;
+	text-indent: -9999px;
+	background: transparent url(../images/logoold.png) no-repeat -5px -10px;
+}
+
+#date {
+	display: block;
+	margin: 0 auto 50px auto;
+	width: 235px;
+	height: 123px;
+	text-indent: -9999px;
+	background: transparent url(../images/date.png) no-repeat center top;
+}
+#date:hover {
+	background-position: center bottom;
+}
+
+#register_btn {
+	display: block;
+	margin: 0 auto 90px auto;
+	width: 341px;
+	height: 149px;
+	text-indent: -9999px;
+	background: transparent url(../images/register.png) no-repeat 3px center;
+}
+
+#past {
+	text-align: center;
+	font-size: 15px;
+	font-weight: bold;
+	color: #0e1824;
+	padding: 0 0 40px 0;
+	margin: 0 auto;
+}
+
+#past a {
+	text-decoration: none;
+	color: #0e1824;
+}
+
+h3 {
+	margin: 0;
+	padding: 0;
+	text-align: center
+}
+
+p {
+	text-align: center;
+	font-size: 14px;
+	padding: 0 20px;
+}
+
+p a {
+	color: darkblue;
+}
+
+#top, #bottom {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 6px;
+	background-color: #0e1824;
+	width: 100%;
+}
+
+#bottom {
+	top: inherit;
+	bottom: 0;
+}
+
+#left, #right {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 6px;
+	background-color: #0e1824;
+	height: 100%;
+}
+
+#right {
+	left: inherit;
+	right: 0;
+}
+
+@media only screen and (max-device-width: 480px) {
+	h1 {
+		height: 294px;
+		margin-bottom: 0;
+		background-position: -5px -50px;
+	}
+	#date {
+		margin-bottom: 20px;
+	}
+	#register_btn {
+		margin-bottom: 40px;
+	}
+}

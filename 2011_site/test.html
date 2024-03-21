@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Valio Con TEST</title>
+	<link rel="SHORTCUT ICON" href="images/favicon.png">
+	<script src="js/jquery.js"></script>
+
+	<script>
+		$.get("http://valiocon.com/api/data/attendees",function(data){
+			data = eval('(' + data + ')');
+			var recs = data.items,
+				info = "",
+				total = 0;
+			for(var i=0; i < data.count; i++){
+				
+				
+//			if(recs[i].pass_type === "conference" && recs[i].paid != "NO" && recs[i].paid != "YES" && recs[i].paid != "225.00" && recs[i].paid != "425.00" && recs[i].paid != "210.00"){
+
+//				if(recs[i].pass_type === "conference" && recs[i].paid != "NO" && recs[i].paid != "550.00" && recs[i].paid != "750.00" && recs[i].paid != "700.00" && recs[i].paid.indexOf("DOUBLE") === -1){
+
+//if(recs[i].pass_type === "conference" && recs[i].paid.indexOf("DOUBLE") !== -1){
+
+if(recs[i].pass_type === "broadcast" && recs[i].paid != "NO"){
+				
+					var location = (recs[i].paid < 550)? "LOCAL" : "NEED HOTEL";
+					
+					//info = info+" "+recs[i].fullname+" &lt;"+ recs[i].email +"&gt;,";
+					info = info+"<br>"+recs[i].fullname+","+ recs[i].email +","+recs[i].paid+","+recs[i].twitter+","+recs[i].tshirt+","+location;
+					total++;
+				}		
+			}	
+			
+			$("body").html(info+"<br><br><br>"+total);
+		
+		});
+	</script>
+	
+</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Valio Con 2016</title>
+	<meta charset="utf-8">
+	<link href="css/2016-temp.css" rel="stylesheet" type="text/css">
+	<link rel="SHORTCUT ICON" href="/2014/images/favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=0">
+</head>
+	<body>
+		<section>
+			<div id="a">
+				<h1>Valio Con 2016</h1>
+				<img src="/images/vcon.png" alt="Valio Con 2016">
+				<p>
+					A Conference for <span class="nobreak">Designers & Makers</span>
+					<br>
+					May 19th-22nd
+				</p>
+				<a href="" id="video"><div id="play"></div></a>
+			</div>
+			<div id="b"></div>
+			<div id="c"><div id="logo"></div></div>
+			<div id="d">
+				<a href="https://plasso.co/s/qKZOLf4oVa" class="btn">Register Now</a>
+				<p class="small">
+					Limited tickets.
+					<br>
+					Get em’ while they last.
+				</p>
+				<p id="location">
+					<span class="dark"><a href="http://www.catamaranresort.com/" target="_blank">Catamaran Resort</a> &bull; San Diego, California</span>
+					<span class="small">Full site & more details soon.</span>
+				</p>
+				<p id="watchmore" class="small">
+					<a href="http://valiocon.com/2014">Watch the talks from 2014</a>
+				</p>
+			</div>
+		</section>
+
+		<div id="player">
+			<iframe id="iframe" width="800" height="450" src="https://www.youtube.com/embed/dyehGWTfdp8?showinfo=0" frameborder="0" allowfullscreen></iframe>
+		</div>
+
+		<script>
+			var player = document.getElementById("player"),
+				iframe = document.getElementById("iframe"),
+				video = document.getElementById("video");
+
+			video.addEventListener("click", function(e){
+				e.preventDefault();
+				iframe.setAttribute("src", "https://www.youtube.com/embed/dyehGWTfdp8?showinfo=0&autoplay=1");
+				player.style.display = "block";
+			});
+
+			player.addEventListener("click", function(e){
+				e.preventDefault();
+				iframe.setAttribute("src", "");
+				player.style.display = "none";
+			});
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-1046804-18']);
+		  _gaq.push(['_trackPageview']);
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,143 @@
+/* TipTip CSS - Version 1.3 */
+
+.tiptip_holder {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 99999;
+}
+
+.tiptip_holder.tip_top {
+	padding-bottom: 5px;
+}
+
+.tiptip_holder.tip_bottom {
+	padding-top: 5px;
+}
+
+.tiptip_holder.tip_right {
+	padding-left: 5px;
+}
+
+.tiptip_holder.tip_left {
+	padding-right: 5px;
+}
+
+.tiptip_content {
+	font-size: 14px;
+	color: #fff;
+	font-weight: bold;
+	text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+	border: 1px solid rgba(0,0,0,0.1);
+	border-bottom-color: #d6d6d6;
+	background-color: #90919b;
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-moz-box-shadow:inset 0 0 15px rgba(0,0,0,0.4);
+   	-webkit-box-shadow:inset 0 0 15px rgba(0,0,0,0.4);
+   	box-shadow:inset 0 0 15px rgba(0,0,0,0.4);
+}
+
+.tiptip_content span {
+	display: block;
+	padding: 5px 12px;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-moz-box-shadow:inset 0 0 2px rgba(255,255,255,0.8);
+   	-webkit-box-shadow:inset 0 0 2px rgba(255,255,255,0.8);
+   	box-shadow:inset 0 0 2px rgba(255,255,255,0.8);
+}
+
+#tiptopic .tiptip_content {
+	font-weight: normal;
+	color: #81868a;
+	font-size: 13px;
+	text-shadow: 0 1px 1px #fff;
+	border: 1px solid rgba(0,0,0,0.15);
+	border-bottom-color: #eee;
+	background-color: #f1f1f7;
+	-webkit-box-shadow:inset 0 0 20px rgba(0,0,0,0.15);
+}
+
+#tiptopic .tiptip_content span {
+	-moz-box-shadow:inset 0 0 2px #fff;
+   	-webkit-box-shadow:inset 0 0 2px #fff;
+   	box-shadow:inset 0 0 2px #fff;
+}
+
+.tiptip_arrow, .tiptip_arrow_inner {
+	position: absolute;
+	border-color: transparent;
+	border-style: solid;
+	border-width: 5px;
+	height: 0;
+	width: 0;
+}
+
+.tiptip_holder.tip_top .tiptip_arrow {
+	border-top-color: #fff;
+	border-top-color: #d6d6d6;
+}
+
+.tiptip_holder.tip_bottom .tiptip_arrow {
+	border-bottom-color: #fff;
+	border-bottom-color: #d6d6d6;
+	border-width: 6px;
+}
+
+.tiptip_holder.tip_right .tiptip_arrow {
+	border-right-color: #fff;
+	border-right-color: #d6d6d6;
+	border-width: 6px;
+}
+
+.tiptip_holder.tip_left .tiptip_arrow {
+	border-left-color: #fff;
+	border-left-color: #d6d6d6;
+	border-width: 6px;
+}
+
+.tiptip_holder.tip_top .tiptip_arrow_inner {
+	margin-top: -6px;
+	margin-left: -5px;
+	border-top-color: #90919b;
+}
+
+.tiptip_holder.tip_bottom .tiptip_arrow_inner {
+	margin-top: -4px;
+	margin-left: -5px;
+	border-bottom-color: #90919b;
+}
+
+.tiptip_holder.tip_right .tiptip_arrow_inner {
+	margin-top: -5px;
+	margin-left: -4px;
+	border-right-color: #90919b;
+}
+
+.tiptip_holder.tip_left .tiptip_arrow_inner {
+	margin-top: -5px;
+	margin-left: -6px;
+	border-left-color: #90919b;
+}
+
+#tiptopic.tip_bottom .tiptip_arrow_inner {
+	border-bottom-color: #e5e5ea;
+}
+#tiptopic.tip_right .tiptip_arrow_inner {
+	border-right-color: #e5e5ea;
+}
+#tiptopic.tip_left .tiptip_arrow_inner {
+	border-left-color: #e5e5ea;
+}
+
+/* Webkit Hacks  */
+@media screen and (-webkit-min-device-pixel-ratio:0) {	
+	.tiptip_content span {
+		padding: 5px 12px 6px 12px;
+	}
+}
