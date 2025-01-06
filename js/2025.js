@@ -8,7 +8,7 @@ playTeaser.addEventListener("click", function(e){
 	e.preventDefault();
 	iframe.setAttribute("width", "320");
 	iframe.setAttribute("height", "570");
-	iframe.setAttribute("src", "https://www.youtube.com/embed/QxWyAt7jlPo?showinfo=0&autoplay=1");
+	iframe.setAttribute("src", "https://www.youtube.com/embed/KUVwcEbjNjg?showinfo=0&autoplay=1");
 	video.style.display = "block";
 });
 playPromo.addEventListener("click", function(e){
