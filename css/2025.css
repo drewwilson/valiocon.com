@@ -389,19 +389,16 @@ footer .soon {
     max-width:100%;
     background-color:#000
 }
-@media only screen and (min-width: 1600px){
-    body{
-        background-size:cover;
+
+@media only screen and (max-width: 360px){
+    #video>iframe,#topvideo>iframe{
+        height:200px !important
     }
 }
-@media only screen and (min-width: 1250px){
-    body{
-        background-size:1600px;
-    }
-}
-@media only screen and (max-width: 660px){
-    #resort img{
-        border-radius: 0;
+@media only screen and (max-width: 398px){
+    .person .name {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 @media only screen and (max-width: 640px){
@@ -418,14 +415,18 @@ footer .soon {
         top: 120px;
     }
 }
-@media only screen and (max-width: 398px){
-    .person .name {
-        opacity: 1;
-        transform: translateY(0);
+@media only screen and (max-width: 660px){
+    #resort img{
+        border-radius: 0;
     }
 }
-@media only screen and (max-width: 360px){
-    #video>iframe,#topvideo>iframe{
-        height:200px !important
+@media only screen and (min-width: 1250px){
+    body{
+        background-size:1600px;
+    }
+}
+@media only screen and (min-width: 1600px){
+    body{
+        background-size:cover;
     }
 }
