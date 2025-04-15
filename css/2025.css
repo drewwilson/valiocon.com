@@ -240,7 +240,8 @@ p.large {
     min-width: 500px;
 }
 
-#hero .button span {
+#hero .button span,
+#collage .button span {
     background: linear-gradient(90deg, var(--color-dark-text), var(--color-red), var(--color-dark-text));
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -250,7 +251,8 @@ p.large {
     animation: button_gradient 3s ease-in infinite;
 }
 
-#hero .button:hover span {
+#hero .button:hover span,
+#collage .button:hover span {
     background: none;
     -webkit-background-clip: none;
     background-clip: none;
@@ -354,7 +356,6 @@ p.large {
         min-width: inherit;
     }
 }
-
 
 #earlybird-floating {
     display: flex;
