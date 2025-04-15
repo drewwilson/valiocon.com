@@ -1,4 +1,52 @@
 document.addEventListener('DOMContentLoaded', function() {
+  const today = new Date();
+  const targetDate = new Date(2025, 4, 30);
+  const timeDifference = targetDate - today;
+  const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+  document.getElementById("daysleft").innerHTML = daysRemaining;
+
+  const video = document.getElementById("video"),
+    iframe = document.getElementById("iframe"),
+    playTeaser = document.getElementById("play_2025"),
+    play2016 = document.getElementById("play_2016"),
+    play2014 = document.getElementById("play_2014"),
+    playTestimonials = document.getElementById("play_testimonials");
+
+  playTeaser.addEventListener("click", function(e){
+    e.preventDefault();
+    iframe.setAttribute("width", "320");
+    iframe.setAttribute("height", "570");
+    iframe.setAttribute("src", "https://www.youtube.com/embed/KUVwcEbjNjg?showinfo=0&autoplay=1");
+    video.classList.add("show");
+  });
+  play2016.addEventListener("click", function(e){
+    e.preventDefault();
+    iframe.setAttribute("width", "1000");
+    iframe.setAttribute("height", "563");
+    iframe.setAttribute("src", "https://www.youtube.com/embed/iutMjFg3tqE?showinfo=0&autoplay=1");
+    video.classList.add("show");
+  });
+  play2014.addEventListener("click", function(e){
+    e.preventDefault();
+    iframe.setAttribute("width", "1000");
+    iframe.setAttribute("height", "563");
+    iframe.setAttribute("src", "https://www.youtube.com/embed/dyehGWTfdp8?showinfo=0&autoplay=1");
+    video.classList.add("show");
+  });
+  playTestimonials.addEventListener("click", function(e){
+    e.preventDefault();
+    iframe.setAttribute("width", "1000");
+    iframe.setAttribute("height", "563");
+    iframe.setAttribute("src", "https://www.youtube.com/embed/HKpNSmozpkE?showinfo=0&autoplay=1");
+    video.classList.add("show");
+  });
+
+  video.addEventListener("click", function(e){
+    e.preventDefault();
+    iframe.setAttribute("src", "");
+    video.classList.remove("show");
+  });
+
   const earlyBird = document.getElementById('earlybird-floating');
   if (earlyBird) {
     let offsetTop = earlyBird.offsetTop;

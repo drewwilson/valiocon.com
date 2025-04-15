@@ -119,6 +119,14 @@ p.large {
     transform: scale3d(.97, .97, .97)
 }
 
+@media only screen and (max-width: 500px){
+    .button {
+        font-size: 34px;
+        line-height: 40px;
+        padding: 20px 50px;
+    }
+}
+
 .button-small {
     display: flex;
     flex-direction: row;
@@ -142,7 +150,7 @@ p.large {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 100px;
+    gap: 40px;
     width: 100%; 
     font-size: 16px;
     padding: 16px 20px 50px 20px;
@@ -230,8 +238,8 @@ p.large {
 
 #hero .button {
     min-width: 500px;
-
 }
+
 #hero .button span {
     background: linear-gradient(90deg, var(--color-dark-text), var(--color-red), var(--color-dark-text));
     background-size: 200% auto;
@@ -332,6 +340,22 @@ p.large {
     z-index: 2;
 }
 
+@media only screen and (max-width: 600px){
+    #hero {
+        padding: 180px 30px 120px 30px;
+    }
+    #hero h2 {
+        font-size: 20px;
+    }
+    #hero .hero-meta {
+        gap: 60px;
+    }
+    #hero .button {
+        min-width: inherit;
+    }
+}
+
+
 #earlybird-floating {
     display: flex;
     position: absolute;
@@ -352,7 +376,7 @@ p.large {
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 100;
+    z-index: 10;
 }
 
 #earlybird-floating a {
@@ -368,9 +392,10 @@ p.large {
 
 #earlybird-floating .middle .accent {
     font-size: 50px;
+    line-height: 46px;
 }
 
-#earlybird-floating .left, #earlybird-floating .middle, #earlybird-floating .right {
+#earlybird-floating .left, #earlybird-floating .middle, #earlybird-floating .right, #earlybird-floating .mobile {
     display: flex;
     flex-direction: column;
 }
@@ -390,6 +415,11 @@ p.large {
     font-weight: 400;
 }
 
+#earlybird-floating .mobile {
+    display: none;
+    gap: 6px;
+}
+
 @media only screen and (max-width: 800px){
     #earlybird-floating .middle {
         display: none;
@@ -400,8 +430,11 @@ p.large {
     #earlybird-floating  {
         flex-direction: column;
     }
-    #earlybird-floating .right {
-        align-items: center;
+    #earlybird-floating .left, #earlybird-floating .right {
+        display: none;
+    }
+    #earlybird-floating .mobile {
+        display: flex;
     }
 }
 
@@ -589,6 +622,27 @@ p.large {
     font-weight: 400;
 }
 
+@media only screen and (max-width: 1000px){
+    #about .big-squiggle {
+        top: 86vh;
+    }
+    #about .about-bottom-text .description {
+        max-width: initial;
+        margin-top: 50px;
+        padding-right: 0;
+    }
+}
+
+@media only screen and (max-width: 800px){
+    #about .big-squiggle {
+        top: initial;
+        bottom: 38%;
+    }
+    #about .videos {
+        flex-wrap: wrap;
+    }
+}
+
 #location {
     position: relative;
     display: flex;
@@ -727,9 +781,47 @@ p.large {
     border-radius: 100px;
 }
 
-
 .quote p span {
     opacity: 0.5;
+}
+
+@media only screen and (max-width: 900px){
+    .c-2up {
+        padding: 0 20px;
+    }
+    .c-2up-body {
+        flex-wrap: wrap;
+    }
+    .c-2up .left {
+        padding-bottom: 0;
+    }
+}
+
+#speakers {
+    padding: 160px 40px;
+}
+
+#speakers .top {
+    padding: 0 4.5vw;
+    text-align: left;
+    color: var(--color-red);
+}
+
+#speakers h3 {
+    font-size: 19.5vw;
+}
+
+#speakers .top p {
+    display: flex;
+    justify-content: end;
+    opacity: 0.6;
+    font-weight: 400;
+    margin-top: -0.8vw;
+    margin-right: 26vw;
+}
+
+#speakers .people {
+    padding: 80px 0;
 }
 
 #collage {
@@ -800,11 +892,28 @@ footer .bottom > * {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     gap: 60px;
 }
 
+footer .very-bottom a {
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 500px){
+    footer {
+        padding: 100px 30px 200px 30px;
+        gap: 60px;
+    }
+    footer .bottom > * {
+        gap: 30px;
+    }
+}
+
 #video {
-    display:none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
     position:fixed;
     top:0;
     left:0;
@@ -813,10 +922,18 @@ footer .bottom > * {
     text-align:center;
     cursor:pointer;
     background-color:rgba(2,3,3,0.9);
-    z-index:10;
+    z-index: 20;
+    will-change: opacity;
+    transition-property: opacity;
+    transition-duration: 1s;
+}
+#video.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
 }
 #video iframe {
     margin:5% auto 0 auto;
     max-width:100%;
-    background-color:#000
+    background-color:#000;
 }
