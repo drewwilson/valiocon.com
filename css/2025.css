@@ -91,6 +91,9 @@ h3 {
     font-weight: 400;
     font-style: italic;
 }
+p {
+    line-height: 1.2em;
+}
 p.large {
     font-size: 24px;
     font-weight: 500;
@@ -119,6 +122,7 @@ p.large {
 .button-small {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     gap: 12px;
     padding: 10px 20px;
     font-weight: 500;
@@ -235,7 +239,7 @@ p.large {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
-    animation: gradient 3s ease-in infinite;
+    animation: button_gradient 3s ease-in infinite;
 }
 
 #hero .button:hover span {
@@ -246,7 +250,7 @@ p.large {
     color: var(--color-red);
     animation: none;
 }
-@keyframes gradient {
+@keyframes button_gradient {
     to {
         background-position: -200% center;
     }
@@ -273,6 +277,8 @@ p.large {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    will-change: width, background-position;
+    transform: rotate3d(0);
 }
 
 #hero .h-1 {
@@ -634,4 +640,183 @@ p.large {
     display: flex;
     flex-shrink: 0;
     color: var(--color-red);
+}
+
+.c-2up {
+    padding: 0 40px;
+}
+
+.c-2up-body {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    border-radius: 40px;
+}
+
+.c-2up .left, .c-2up .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 60px;
+    width: 100%;
+}
+
+.c-2up h3 {
+    font-size: 60px;
+}
+
+.c-2up .button {
+    font-size: 32px;
+    width: 100%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.c-2up .left {
+    gap: 60px;
+}
+
+.c-2up .left img {
+    width: 536px;
+    max-width: 100%;
+}
+
+#w-saying .c-2up-body {
+    color: var(--color-light);
+    background-color: #06200A;
+}
+
+#w-saying .button {
+    color: #06200A;
+}
+
+#w-saying .right {
+    gap: 60px;
+}
+
+#w-included .c-2up-body {
+    color: var(--color-light);
+    background-color: var(--color-dark-bg);
+}
+
+#w-included .left img {
+    width: 470px;
+}
+
+#w-included .right {
+    font-size: 24px;
+    text-align: left;
+    gap: 35px;
+}
+
+.quote {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    font-size: 20px;
+    text-align: left;
+    color: var(--color-light);
+}
+
+.quote img {
+    display: block;
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+}
+
+
+.quote p span {
+    opacity: 0.5;
+}
+
+#collage {
+	position: relative;
+	height: 500px;
+	width: 100%;
+    margin-top: 180px;
+	max-width: inherit;
+	overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#collage .photos {
+    position: absolute;
+    height: 100%;
+    width: 5400px;
+    background: transparent url(../images/collage.jpg) repeat-x left top;
+    background-size: 1800px 500px;
+    transform: translate3d(0, 0, 0);
+    z-index: 0;
+    animation: collage 60s linear infinite;
+    will-change: transform;
+}
+
+#collage .button {
+    z-index: 1;
+}
+
+@keyframes collage {
+    0% {
+		transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+    	transform: translate3d(-1800px, 0, 0);
+    }
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    padding: 140px 60px 200px 60px;
+    width: 100%;
+    background: transparent url(../images/footer-bg.jpg) center no-repeat;
+    background-size: cover;
+}
+
+footer .badge {
+    width: 117px;
+}
+
+footer .bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+}
+
+footer .bottom > * {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+}
+
+#video {
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    text-align:center;
+    cursor:pointer;
+    background-color:rgba(2,3,3,0.9);
+    z-index:10;
+}
+#video iframe {
+    margin:5% auto 0 auto;
+    max-width:100%;
+    background-color:#000
 }
