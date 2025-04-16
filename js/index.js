@@ -76,14 +76,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (numImages > 0) {
       const defaultWidth = 100 / numImages;
-      const expansionAmount = 0.5;
+      const expansionAmount = 0.7;
       let currentHoveredIndex = -1;
       
       heroImages.forEach(image => {
         image.style.width = `${defaultWidth}%`;
         
         const widthTransitionSpeed = '0.2s';
-        const bgTransitionSpeed = '0.2s';
+        const bgTransitionSpeed = '0.15s';
         
         image.style.transition = `width ${widthTransitionSpeed} ease-out, background-position ${bgTransitionSpeed} ease-out`;
         image.style.backgroundPosition = '50% 50%';
@@ -157,8 +157,8 @@ document.addEventListener('DOMContentLoaded', function() {
               const relativeMouseX = (mouseX - imgRect.left) / imgRect.width;
               const clampedRelativeX = Math.max(0, Math.min(1, relativeMouseX));
               
-              const parallaxMin = 45;
-              const parallaxMax = 55;
+              const parallaxMin = 47;
+              const parallaxMax = 53;
               const parallaxRange = parallaxMax - parallaxMin;
               
               const bgPosX = parallaxMin + (clampedRelativeX * parallaxRange);
@@ -232,5 +232,80 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       }
     }
+  }
+
+  const stickers = document.querySelectorAll('.sticker');
+  let activeSticker = null;
+  let offsetX, offsetY;
+
+  stickers.forEach(sticker => {
+    sticker.addEventListener('mousedown', function(e) {
+      startDrag(e, this);
+    });
+    sticker.addEventListener('touchstart', function(e) {
+      const touch = e.touches[0];
+      startDrag({
+        clientX: touch.clientX,
+        clientY: touch.clientY,
+        preventDefault: () => e.preventDefault()
+      }, this);
+      e.preventDefault();
+    }, { passive: false });
+  });
+
+  function startDrag(e, sticker) {
+    activeSticker = sticker;
+    const computedStyle = window.getComputedStyle(activeSticker);
+    const currentLeft = parseInt(computedStyle.left) || 0;
+    const currentTop = parseInt(computedStyle.top) || 0;
+    offsetX = e.clientX - currentLeft;
+    offsetY = e.clientY - currentTop;
+    
+    const parent = activeSticker.parentElement;
+    activeSticker._parentWidth = parent.clientWidth;
+    activeSticker._parentHeight = parent.clientHeight;
+    activeSticker.classList.add("dragging");
+    
+    document.addEventListener('mousemove', handleMove);
+    document.addEventListener('mouseup', endDrag);
+    document.addEventListener('touchmove', handleTouchMove, { passive: false });
+    document.addEventListener('touchend', endDrag);
+    e.preventDefault();
+  }
+
+  function handleMove(e) {
+    updatePosition(e.clientX, e.clientY);
+  }
+
+  function handleTouchMove(e) {
+    const touch = e.touches[0];
+    updatePosition(touch.clientX, touch.clientY);
+    e.preventDefault();
+  }
+
+  function updatePosition(clientX, clientY) {
+    const newLeft = clientX - offsetX;
+    const newTop = clientY - offsetY;
+    
+    const leftPercentage = (newLeft / activeSticker._parentWidth) * 100;
+    const topPercentage = (newTop / activeSticker._parentHeight) * 100;
+    
+    activeSticker.style.left = leftPercentage + '%';
+    activeSticker.style.top = topPercentage + '%';
+  }
+
+  function endDrag() {
+    document.removeEventListener('mousemove', handleMove);
+    document.removeEventListener('mouseup', endDrag);
+    document.removeEventListener('touchmove', handleTouchMove);
+    document.removeEventListener('touchend', endDrag);
+    
+    if (activeSticker) {
+      activeSticker.classList.remove("dragging");
+      delete activeSticker._parentWidth;
+      delete activeSticker._parentHeight;
+    }
+    
+    activeSticker = null;
   }
 });
