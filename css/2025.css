@@ -629,7 +629,7 @@ p.large {
 
 #about .big-squiggle {
   position: absolute;
-  top: 46vh;
+  top: 20%;
   width: 100%;
   overflow-x: hidden;
   z-index: 0;
@@ -674,6 +674,19 @@ p.large {
   font-weight: 400;
 }
 
+@media only screen and (min-width: 1800px){
+  #about .big-squiggle {
+    top: initial;
+    bottom: 20%;
+  }
+}
+@media only screen and (min-width: 1500px){
+  #about .big-squiggle {
+    top: initial;
+    bottom: 24%;
+  }
+}
+
 @media only screen and (max-width: 1000px){
   #about .big-squiggle {
     top: 86vh;
@@ -684,7 +697,6 @@ p.large {
     padding-right: 0;
   }
 }
-
 @media only screen and (max-width: 800px){
   #about .big-squiggle {
     top: initial;
@@ -749,7 +761,7 @@ p.large {
   display: flex;
   flex-shrink: 0;
   color: var(--color-red);
-  font-size: 20px;
+  font-size: 18px;
 }
 
 @media only screen and (max-width: 800px){
@@ -867,6 +879,12 @@ p.large {
 
 .quote p span {
   opacity: 0.5;
+}
+
+@media only screen and (min-width: 1400px){
+  .c-2up h3 {
+    font-size: 60px;
+  }
 }
 
 @media only screen and (max-width: 1300px){
