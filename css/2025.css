@@ -918,6 +918,7 @@ p.large {
 #speakers {
   position: relative;
   padding: 160px 40px;
+  overflow: hidden;
 }
 
 #speakers .top {
@@ -975,6 +976,41 @@ p.large {
 
 .person .images img {
   width: 100%;
+}
+
+.person .images::before {
+  content: "";
+  position: absolute;
+  width: 350px;
+  height: 436px;
+  left: -280px;
+  top: -110px;
+  background: transparent url(../images/people/lines/line1.svg) center no-repeat;
+  pointer-events: none;
+}
+
+.person.alt-1 .images::before {
+  width: 432px;
+  height: 405px;
+  left: initial;
+  right: -280px;
+  top: 55px;
+  background-image: url(../images/people/lines/line2.svg);
+}
+.person.alt-2 .images::before {
+  width: 510px;
+  height: 433px;
+  left: -320px;
+  top: -50px;
+  background-image: url(../images/people/lines/line3.svg);
+}
+.person.alt-3 .images::before {
+  width: 513px;
+  height: 511px;
+  left: initial;
+  right: -320px;
+  top: -80px;
+  background-image: url(../images/people/lines/line4.svg);
 }
 
 .person .photo {
@@ -1042,6 +1078,25 @@ p.large {
   .person .images {
     position: absolute;
     top: -200px;
+  }
+  .person .images::before {
+    transform: scaleX(-1);
+    z-index: -1;
+    left: 100px;
+    top: -100px;
+  }
+  .person.alt-1 .images::before {
+    right: 0px;
+    top: 15px;
+  }
+  .person.alt-2 .images::before {
+    right: inherit;
+    left: 0px;
+    top: -90px;
+  }
+  .person.alt-3 .images::before {
+    right: -50px;
+    top: -90px;
   }
 }
 @media only screen and (max-width: 600px){
