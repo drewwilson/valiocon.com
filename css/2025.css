@@ -368,6 +368,18 @@ p.large {
   z-index: 2;
 }
 
+@media only screen and (max-width: 900px){
+  #hero .h-5, #hero .h-13 {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 750px){
+  #hero .h-11 {
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 600px){
   #hero {
     padding: 180px 30px 120px 30px;
@@ -381,7 +393,7 @@ p.large {
   #hero .button {
     min-width: inherit;
   }
-  #hero .h-5, #hero .h-11, #hero .h-13 {
+  #hero .h-7, #hero .h-8, #hero .h-9{
     display: none;
   }
 }
