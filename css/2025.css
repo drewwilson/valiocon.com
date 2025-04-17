@@ -1151,6 +1151,12 @@ p.large {
   #speakers .top p {
     justify-content: center;
   }
+  .person .links {
+    flex-wrap: wrap;
+  }
+  .person .title {
+    flex-basis: 100%;
+  }
 }
 
 @media only screen and (max-width: 500px){
@@ -1398,6 +1404,14 @@ footer .very-bottom a {
     top: 37%;
     left: 3%;
   }
+  #speakers .sticker.one {
+    top: 3%;
+    left: 72%;
+  }
+  #speakers .sticker.two {
+    top: 3.8%;
+    left: 72%;
+  }
 }
 @media only screen and (max-width: 600px){
   #about .sticker.two {
@@ -1417,13 +1431,5 @@ footer .very-bottom a {
   }
   #location .sticker.four {
     left: 80%;
-  }
-  #speakers .sticker.one {
-    top: 3%;
-    left: 72%;
-  }
-  #speakers .sticker.two {
-    top: 3.8%;
-    left: 72%;
   }
 }
