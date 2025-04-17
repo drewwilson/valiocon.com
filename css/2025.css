@@ -1142,6 +1142,10 @@ p.large {
   #speakers h3 {
     font-size: 100px;
   }
+  .person .fade {
+    left: 0px;
+    right: 0px;
+  }
 }
 
 #collage {
@@ -1387,9 +1391,15 @@ footer .very-bottom a {
   #location .sticker.two {
     left: -4%;
   }
+  #location .sticker.three {
+    left: 68%;
+  }
+  #location .sticker.four {
+    left: 80%;
+  }
   #speakers .sticker.one {
     top: 3%;
-    left: 78%;
+    left: 72%;
   }
   #speakers .sticker.two {
     top: 3.8%;
