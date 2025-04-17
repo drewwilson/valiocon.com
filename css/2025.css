@@ -1167,8 +1167,8 @@ p.large {
     font-size: 100px;
   }
   .person .fade {
-    left: 0px;
-    right: 0px;
+    left: -20px;
+    right: -20px;
   }
 }
 
@@ -1394,7 +1394,7 @@ footer .very-bottom a {
 @media only screen and (max-width: 700px){
   #about .sticker.one {
     top: 43%;
-    left: 81%;
+    left: 80%;
   }
   #about .sticker.two {
     top: 31%;
