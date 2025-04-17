@@ -1382,6 +1382,9 @@ footer .very-bottom a {
   }
 }
 @media only screen and (max-width: 600px){
+  #about .sticker.two {
+    left: 65%;
+  }
   #about .sticker.four {
     left: 64%;
   }
