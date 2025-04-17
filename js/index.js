@@ -69,170 +69,184 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   const hero = document.getElementById('hero');
-  if (hero) {
-    const heroImagesContainer = document.querySelector('.hero-images');
-    const heroImages = Array.from(document.querySelectorAll('.hero-image'));
-    const numImages = heroImages.length;
+  const heroImagesContainer = document.querySelector('.hero-images');
+  const heroImages = Array.from(document.querySelectorAll('.hero-image')).filter(element => {
+    const computedStyle = window.getComputedStyle(element);
+    return computedStyle.display !== 'none';
+  });
+  const numImages = heroImages.length;
+
+  function handleHeroImages(heroImagesContainer, heroImages, numImages) {
+    const defaultWidth = 100 / numImages;
+    const expansionAmount = 0.7;
+    let currentHoveredIndex = -1;
     
-    if (numImages > 0) {
-      const defaultWidth = 100 / numImages;
-      const expansionAmount = 0.7;
-      let currentHoveredIndex = -1;
+    heroImages.forEach(image => {
+      image.style.width = `${defaultWidth}%`;
       
-      heroImages.forEach(image => {
-        image.style.width = `${defaultWidth}%`;
-        
-        const widthTransitionSpeed = '0.2s';
-        const bgTransitionSpeed = '0.15s';
-        
-        image.style.transition = `width ${widthTransitionSpeed} ease-out, background-position ${bgTransitionSpeed} ease-out`;
-        image.style.backgroundPosition = '50% 50%';
-      });
+      const widthTransitionSpeed = '0.2s';
+      const bgTransitionSpeed = '0.15s';
       
-      hero.addEventListener('mousemove', handleMouseOrTouchMove);
+      image.style.transition = `width ${widthTransitionSpeed} ease-out, background-position ${bgTransitionSpeed} ease-out`;
+      image.style.backgroundPosition = '50% 50%';
+    });
+    
+    hero.addEventListener('mousemove', handleMouseOrTouchMove);
+    
+    hero.addEventListener('touchstart', handleTouchStart);
+    hero.addEventListener('touchmove', handleTouchMove);
+    hero.addEventListener('touchend', handleTouchEnd);
+    
+    let isTouching = false;
+    
+    function handleTouchStart(e) {
+      isTouching = true;
+      if (e.target.closest('.hero-image')) {
+        e.preventDefault();
+      }
+      handleTouchMove(e);
+    }
+    
+    function handleTouchMove(e) {
+      if (!isTouching) return;
       
-      hero.addEventListener('touchstart', handleTouchStart);
-      hero.addEventListener('touchmove', handleTouchMove);
-      hero.addEventListener('touchend', handleTouchEnd);
-      
-      let isTouching = false;
-      
-      function handleTouchStart(e) {
-        isTouching = true;
-        if (e.target.closest('.hero-image')) {
-          e.preventDefault();
-        }
-        handleTouchMove(e);
+      if (e.target.closest('.hero-image')) {
+        e.preventDefault();
       }
       
-      function handleTouchMove(e) {
-        if (!isTouching) return;
+      const touch = e.touches[0];
+      if (touch) {
+        const mouseEvent = {
+          clientX: touch.clientX,
+          clientY: touch.clientY
+        };
         
-        if (e.target.closest('.hero-image')) {
-          e.preventDefault();
-        }
+        handleMouseOrTouchMove(mouseEvent);
+      }
+    }
+    
+    function handleTouchEnd() {
+      isTouching = false;
+      resetAllImages();
+      currentHoveredIndex = -1;
+    }
+    
+    function handleMouseOrTouchMove(e) {
+      const heroRect = heroImagesContainer.getBoundingClientRect();
+      
+      const mouseX = e.clientX;
+      
+      if (
+        e.clientX >= heroRect.left &&
+        e.clientX <= heroRect.right &&
+        e.clientY >= heroRect.top &&
+        e.clientY <= heroRect.bottom
+      ) {
+        let foundHoveredImage = false;
         
-        const touch = e.touches[0];
-        if (touch) {
-          const mouseEvent = {
-            clientX: touch.clientX,
-            clientY: touch.clientY
-          };
+        for (let i = 0; i < numImages; i++) {
+          const img = heroImages[i];
+          const imgRect = img.getBoundingClientRect();
           
-          handleMouseOrTouchMove(mouseEvent);
-        }
-      }
-      
-      function handleTouchEnd() {
-        isTouching = false;
-        resetAllImages();
-        currentHoveredIndex = -1;
-      }
-      
-      function handleMouseOrTouchMove(e) {
-        const heroRect = heroImagesContainer.getBoundingClientRect();
-        
-        const mouseX = e.clientX;
-        
-        if (
-          e.clientX >= heroRect.left &&
-          e.clientX <= heroRect.right &&
-          e.clientY >= heroRect.top &&
-          e.clientY <= heroRect.bottom
-        ) {
-          let foundHoveredImage = false;
-          
-          for (let i = 0; i < numImages; i++) {
-            const img = heroImages[i];
-            const imgRect = img.getBoundingClientRect();
+          if (
+            mouseX >= imgRect.left && 
+            mouseX <= imgRect.right && 
+            e.clientY >= imgRect.top && 
+            e.clientY <= imgRect.bottom
+          ) {
+            foundHoveredImage = true;
             
-            if (
-              mouseX >= imgRect.left && 
-              mouseX <= imgRect.right && 
-              e.clientY >= imgRect.top && 
-              e.clientY <= imgRect.bottom
-            ) {
-              foundHoveredImage = true;
-              
-              const relativeMouseX = (mouseX - imgRect.left) / imgRect.width;
-              const clampedRelativeX = Math.max(0, Math.min(1, relativeMouseX));
-              
-              const parallaxMin = 47;
-              const parallaxMax = 53;
-              const parallaxRange = parallaxMax - parallaxMin;
-              
-              const bgPosX = parallaxMin + (clampedRelativeX * parallaxRange);
-              img.style.backgroundPosition = `${bgPosX}% 50%`;
-              
-              if (i !== currentHoveredIndex) {
-                if (currentHoveredIndex !== -1) {
-                  heroImages[currentHoveredIndex].style.backgroundPosition = '50% 50%';
-                }
-                
-                updateHoveredImage(i);
-                currentHoveredIndex = i;
+            const relativeMouseX = (mouseX - imgRect.left) / imgRect.width;
+            const clampedRelativeX = Math.max(0, Math.min(1, relativeMouseX));
+            
+            const parallaxMin = 47;
+            const parallaxMax = 53;
+            const parallaxRange = parallaxMax - parallaxMin;
+            
+            const bgPosX = parallaxMin + (clampedRelativeX * parallaxRange);
+            img.style.backgroundPosition = `${bgPosX}% 50%`;
+            
+            if (i !== currentHoveredIndex) {
+              if (currentHoveredIndex !== -1) {
+                heroImages[currentHoveredIndex].style.backgroundPosition = '50% 50%';
               }
               
-              break;
+              updateHoveredImage(i);
+              currentHoveredIndex = i;
             }
-          }
-          
-          if (!foundHoveredImage && currentHoveredIndex !== -1) {
-            resetAllImages();
-            currentHoveredIndex = -1;
-          }
-        } else {
-          if (currentHoveredIndex !== -1) {
-            resetAllImages();
-            currentHoveredIndex = -1;
+            
+            break;
           }
         }
-      }
-      
-      hero.addEventListener('mouseleave', () => {
-        if (!isTouching) {
+        
+        if (!foundHoveredImage && currentHoveredIndex !== -1) {
           resetAllImages();
           currentHoveredIndex = -1;
         }
-      });
-      
-      function updateHoveredImage(index) {
-        if (index < 0 || index >= numImages) return;
-        
-        resetAllImages();
-        
-        const hoveredImage = heroImages[index];
-        hoveredImage.style.width = `${defaultWidth * (1 + expansionAmount)}%`;
-        
-        const shrinkAmount = (defaultWidth * expansionAmount) / 2;
-        
-        if (index > 0) {
-          const leftNeighbor = heroImages[index - 1];
-          leftNeighbor.style.width = `${defaultWidth - (shrinkAmount * 0.6)}%`;
+      } else {
+        if (currentHoveredIndex !== -1) {
+          resetAllImages();
+          currentHoveredIndex = -1;
         }
-        
-        if (index < numImages - 1) {
-          const rightNeighbor = heroImages[index + 1];
-          rightNeighbor.style.width = `${defaultWidth - (shrinkAmount * 0.6)}%`;
-        }
-        
-        if (index === 0 && index < numImages - 1) {
-          const rightNeighbor = heroImages[index + 1];
-          rightNeighbor.style.width = `${defaultWidth - (shrinkAmount * 2 * 0.6)}%`;
-        } else if (index === numImages - 1 && index > 0) {
-          const leftNeighbor = heroImages[index - 1];
-          leftNeighbor.style.width = `${defaultWidth - (shrinkAmount * 2 * 0.6)}%`;
-        }
-      }
-      
-      function resetAllImages() {
-        heroImages.forEach(image => {
-          image.style.width = `${defaultWidth}%`;
-          image.style.backgroundPosition = '50% 50%';
-        });
       }
     }
+    
+    hero.addEventListener('mouseleave', () => {
+      if (!isTouching) {
+        resetAllImages();
+        currentHoveredIndex = -1;
+      }
+    });
+    
+    function updateHoveredImage(index) {
+      if (index < 0 || index >= numImages) return;
+      
+      resetAllImages();
+      
+      const hoveredImage = heroImages[index];
+      hoveredImage.style.width = `${defaultWidth * (1 + expansionAmount)}%`;
+      
+      const shrinkAmount = (defaultWidth * expansionAmount) / 2;
+      
+      if (index > 0) {
+        const leftNeighbor = heroImages[index - 1];
+        leftNeighbor.style.width = `${defaultWidth - (shrinkAmount * 0.6)}%`;
+      }
+      
+      if (index < numImages - 1) {
+        const rightNeighbor = heroImages[index + 1];
+        rightNeighbor.style.width = `${defaultWidth - (shrinkAmount * 0.6)}%`;
+      }
+      
+      if (index === 0 && index < numImages - 1) {
+        const rightNeighbor = heroImages[index + 1];
+        rightNeighbor.style.width = `${defaultWidth - (shrinkAmount * 2 * 0.6)}%`;
+      } else if (index === numImages - 1 && index > 0) {
+        const leftNeighbor = heroImages[index - 1];
+        leftNeighbor.style.width = `${defaultWidth - (shrinkAmount * 2 * 0.6)}%`;
+      }
+    }
+    
+    function resetAllImages() {
+      heroImages.forEach(image => {
+        image.style.width = `${defaultWidth}%`;
+        image.style.backgroundPosition = '50% 50%';
+      });
+    }
   }
+
+  if (numImages > 0) {
+    handleHeroImages(heroImagesContainer, heroImages, numImages);
+  }
+  window.addEventListener('resize', function() {
+    const hi = Array.from(document.querySelectorAll('.hero-image')).filter(element => {
+      const computedStyle = window.getComputedStyle(element);
+      return computedStyle.display !== 'none';
+    });
+    if (hi.length > 0) {
+      handleHeroImages(heroImagesContainer, hi, hi.length);
+    }
+  });
 
   const stickers = document.querySelectorAll('.sticker');
   let activeSticker = null;
@@ -242,35 +256,41 @@ document.addEventListener('DOMContentLoaded', function() {
     sticker.addEventListener('mousedown', function(e) {
       startDrag(e, this);
     });
+    
     sticker.addEventListener('touchstart', function(e) {
       const touch = e.touches[0];
       startDrag({
         clientX: touch.clientX,
         clientY: touch.clientY,
-        preventDefault: () => e.preventDefault()
+        preventDefault: () => {}
       }, this);
-      e.preventDefault();
-    }, { passive: false });
+    });
   });
 
   function startDrag(e, sticker) {
     activeSticker = sticker;
+    
     const computedStyle = window.getComputedStyle(activeSticker);
     const currentLeft = parseInt(computedStyle.left) || 0;
     const currentTop = parseInt(computedStyle.top) || 0;
+    
     offsetX = e.clientX - currentLeft;
     offsetY = e.clientY - currentTop;
     
     const parent = activeSticker.parentElement;
     activeSticker._parentWidth = parent.clientWidth;
     activeSticker._parentHeight = parent.clientHeight;
+    
     activeSticker.classList.add("dragging");
     
     document.addEventListener('mousemove', handleMove);
     document.addEventListener('mouseup', endDrag);
     document.addEventListener('touchmove', handleTouchMove, { passive: false });
     document.addEventListener('touchend', endDrag);
-    e.preventDefault();
+    
+    if (e.type !== 'touchstart') {
+      e.preventDefault();
+    }
   }
 
   function handleMove(e) {
@@ -278,12 +298,15 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function handleTouchMove(e) {
+    e.preventDefault();
+    
     const touch = e.touches[0];
     updatePosition(touch.clientX, touch.clientY);
-    e.preventDefault();
   }
 
   function updatePosition(clientX, clientY) {
+    if (!activeSticker) return;
+    
     const newLeft = clientX - offsetX;
     const newTop = clientY - offsetY;
     
