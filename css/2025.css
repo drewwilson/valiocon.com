@@ -3,7 +3,7 @@
   font-family: "InterVariable";
   font-style: normal;
   font-display: swap;
-  src: url('../Inter.var.woff2') format('woff2');
+  src: url('../fonts/Inter.var.woff2') format('woff2');
 }
 
 :root {
@@ -155,9 +155,11 @@ p.large {
   transition-property: transform;
   transition-duration: 0.1s;
   z-index: 6;
+  cursor: grab;
 }
 .sticker.dragging {
   transform: rotate(3deg);
+  cursor: grabbing;
 }
 
 #header {
@@ -1069,6 +1071,10 @@ p.large {
   line-height: 1.4em;
 }
 
+.person .description a {
+  text-decoration: underline;
+}
+
 .person .fade {
   position: absolute;
   display: flex;
@@ -1123,6 +1129,18 @@ p.large {
   }
   #speakers .top p {
     font-size: 18px;
+  }
+  #speakers h3 {
+    text-align: center;
+  }
+  #speakers .top p {
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 500px){
+  #speakers h3 {
+    font-size: 100px;
   }
 }
 
@@ -1306,14 +1324,14 @@ footer .very-bottom a {
 }
 
 #speakers .sticker.one {
-  top: 6%;
+  top: 2.4%;
   left: 85%;
   width: 100px;
   height: 67.5px;
   background-image: url(../images/stickers/roman.png);
 }
 #speakers .sticker.two {
-  top: 8%;
+  top: 3.2%;
   left: 82%;
   width: 54px;
   height: 40.5px;
@@ -1369,7 +1387,12 @@ footer .very-bottom a {
   #location .sticker.two {
     left: -4%;
   }
+  #speakers .sticker.one {
+    top: 3%;
+    left: 78%;
+  }
   #speakers .sticker.two {
-    top: 18%;
+    top: 3.8%;
+    left: 72%;
   }
 }
