@@ -891,6 +891,18 @@ p.large {
   }
 }
 
+@media only screen and (max-width: 500px){
+  .c-2up .left {
+    padding: 60px 40px 0 40px;
+  }
+  .c-2up .right {
+    padding: 60px 40px;
+  }
+  #w-saying .right {
+    gap: 50px;
+  }
+}
+
 #speakers {
   position: relative;
   padding: 160px 40px;
@@ -1142,6 +1154,9 @@ p.large {
 }
 
 @media only screen and (max-width: 500px){
+  #speakers {
+    padding-bottom: 80px;
+  }
   #speakers h3 {
     font-size: 100px;
   }
@@ -1356,18 +1371,18 @@ footer .very-bottom a {
 }
 @media only screen and (max-width: 800px){
   #location .sticker.one {
-    top: -2%;
+    top: 1%;
     left: 5%;
   }
   #location .sticker.two {
-    top: 7%;
+    top: 10%;
     left: 3%;
   }
   #location .sticker.three {
-    top: -2%;
+    top: 1%;
   }
   #location .sticker.four {
-    top: 5%;
+    top: 8%;
   }
 }
 @media only screen and (max-width: 700px){
