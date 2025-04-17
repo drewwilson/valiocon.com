@@ -739,6 +739,7 @@ p.large {
   flex-direction: row;
   gap: 60px;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   text-align: left;
   font-weight: 500;
@@ -748,6 +749,7 @@ p.large {
   display: flex;
   flex-shrink: 0;
   color: var(--color-red);
+  font-size: 20px;
 }
 
 @media only screen and (max-width: 800px){
@@ -777,6 +779,8 @@ p.large {
 
 .c-2up {
   padding: 0 40px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .c-2up-body {
@@ -930,6 +934,8 @@ p.large {
   padding: 0 4.5vw;
   text-align: left;
   color: var(--color-red);
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 #speakers h3 {
@@ -1062,6 +1068,16 @@ p.large {
 }
 .person .images:hover .bg-2 {
   transform: rotate(-10deg);
+}
+
+@media only screen and (min-width: 1200px){
+  #speakers h3 {
+    font-size: 240px;
+  }
+  #speakers .top p {
+    margin-right: inherit;
+    width: 720px;
+  }
 }
 
 @media only screen and (max-width: 1000px){
@@ -1439,6 +1455,15 @@ footer .very-bottom a {
   width: 54px;
   height: 40.5px;
   background-image: url(../images/stickers/vcon-rising.png);
+}
+
+@media only screen and (min-width: 1400px){
+  #about .sticker.four {
+    top: 95%;
+  }
+  #about .sticker.five {
+    top: 102%;
+  }
 }
 
 @media only screen and (max-width: 1000px){
