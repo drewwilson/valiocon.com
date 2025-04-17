@@ -381,6 +381,9 @@ p.large {
   #hero .button {
     min-width: inherit;
   }
+  #hero .h-5, #hero .h-11, #hero .h-13 {
+    display: none;
+  }
 }
 
 #earlybird-floating {
