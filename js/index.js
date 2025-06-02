@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const today = new Date();
-  const targetDate = new Date(2025, 4, 30);
-  const timeDifference = targetDate - today;
-  const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
-  document.getElementById("daysleft").innerHTML = daysRemaining;
+  // const today = new Date();
+  // const targetDate = new Date(2025, 4, 30);
+  // const timeDifference = targetDate - today;
+  // const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+  // document.getElementById("daysleft").innerHTML = daysRemaining;
 
   const video = document.getElementById("video"),
     iframe = document.getElementById("iframe"),
