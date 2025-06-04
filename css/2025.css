@@ -162,8 +162,18 @@ p.large {
   cursor: grabbing;
 }
 
+#header-bg {
+  position: fixed;
+  display: flex;
+  width: 100%; 
+  height: 110px;
+  z-index: 3;
+  mask: linear-gradient(black, black, transparent);
+  backdrop-filter: blur(45px);
+}
+
 #header {
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -174,8 +184,11 @@ p.large {
   padding: 16px 20px 50px 20px;
   color: var(--color-light);
   z-index: 4;
-  mask: linear-gradient(black, black, transparent);
-  backdrop-filter: blur(45px);
+  mix-blend-mode: difference;
+}
+
+#header.at-top {
+  mix-blend-mode: initial;
 }
 
 #header .badge {
@@ -185,6 +198,18 @@ p.large {
 
 #header a {
   color: var(--color-light);
+}
+
+#header a .reg {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(var(--color-light-rgb), 0.2);
+  transition-property: text-decoration-color;
+  transition-duration: 0.5s;
+}
+#header a:hover .reg {
+  text-decoration-color: rgba(var(--color-light-rgb), 0.7);
 }
 
 #header .right {

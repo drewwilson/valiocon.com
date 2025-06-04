@@ -67,8 +67,28 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', updateStickyState);
     updateStickyState();
   }
-  
+
   const hero = document.getElementById('hero');
+  const header = document.getElementById('header');
+  let heroTop = hero.offsetTop;
+  let heroHeight = hero.offsetHeight;
+
+  function updateHeaderState() {
+    const scrollPosition = window.scrollY || window.pageYOffset;
+    const isFullyVisible = (heroTop + heroHeight) > scrollPosition;
+    header.classList.toggle('at-top', isFullyVisible);
+  }
+  window.addEventListener('resize', function() {
+    const atTop = header.classList.contains('at-top');
+    header.classList.remove('at-top');
+    heroTop = hero.offsetTop;
+    heroHeight = hero.offsetHeight;
+    if (atTop) updateHeaderState();
+  });
+  window.addEventListener('scroll', updateHeaderState);
+  updateHeaderState();
+  
+
   const heroImagesContainer = document.querySelector('.hero-images');
   const heroImages = Array.from(document.querySelectorAll('.hero-image')).filter(element => {
     const computedStyle = window.getComputedStyle(element);
