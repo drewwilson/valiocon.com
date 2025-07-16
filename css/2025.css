@@ -1649,7 +1649,12 @@ p.large {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
+  text-align: left;
+}
+
+.schedule-card-item-right {
+  text-align: right;
 }
 
 .schedule-giveaway {
@@ -1671,6 +1676,21 @@ p.large {
   }
   .schedule-card {
     width: 100%;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  #schedule {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .schedule-card {
+    width: 100%;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
