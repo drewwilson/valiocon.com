@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const today = new Date();
-  const targetDate = new Date(2025, 8, 20);
+  const targetDate = new Date(2025, 7, 20);
   const timeDifference = targetDate - today;
   const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
   document.getElementById("daysleft").innerHTML = daysRemaining;
