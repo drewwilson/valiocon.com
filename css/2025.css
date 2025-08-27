@@ -1601,10 +1601,14 @@ p.large {
   width: 100%;
   max-width: 900px;
   margin: 50px auto 0 auto;
-  gap: 40px;
-  justify-content: space-between;
+  gap: 70px;
+  justify-content: center;
   flex-wrap: wrap;
   align-items: center;
+}
+
+#sponsors .sponsor-logos img {
+  height: 40px;
 }
 
 #schedule {
