@@ -1604,6 +1604,7 @@ p.large {
   gap: 40px;
   justify-content: space-between;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 #schedule {
