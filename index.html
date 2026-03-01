@@ -507,7 +507,9 @@
   <body>
     <nav class="nav">
       <div class="nav-logo">$799</div>
-      <a href="https://buy.stripe.com/6oU6or1qn2IUaMT3qGenS01" class="nav-btn">Register</a>
+      <a href="https://buy.stripe.com/6oU6or1qn2IUaMT3qGenS01" class="nav-btn"
+        >Register</a
+      >
     </nav>
 
     <div class="top-buttons">
@@ -940,7 +942,7 @@
         a.href = `https://x.com/${s.twitter}`;
         a.target = "_blank";
         a.rel = "noopener";
-        a.innerHTML = `<div class="speaker-avatar" style="background-image: url('file:///Users/drew/Local-Only/Code/valiocon.com/images/speakers/${s.twitter}.jpg')"></div><span class="speaker-name">${s.name}</span>`;
+        a.innerHTML = `<div class="speaker-avatar" style="background-image: url('/images/speakers/${s.twitter}.jpg')"></div><span class="speaker-name">${s.name}</span>`;
         spGrid.appendChild(a);
       });
       spGrid.insertAdjacentHTML(
