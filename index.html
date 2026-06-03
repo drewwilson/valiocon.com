@@ -113,6 +113,10 @@
         transform: scale(1.05);
         background: var(--accent);
       }
+      .nav-btn:active,
+      .nav-btn:visited {
+        color: var(--white);
+      }
 
       /* ══════════ HEADER ══════════ */
       /* #header-bg {
@@ -445,7 +449,7 @@
         z-index: 4;
         background: var(--white);
         color: var(--accent);
-        padding: 8vw 5vw;
+        padding: 8vw 5vw 12vw 5vw;
       }
       .intro-body {
         max-width: 640px;
@@ -472,6 +476,95 @@
       .intro-text p {
         font-size: clamp(17px, 1.5vw, 22px);
         line-height: 1.6;
+      }
+      .intro-videos {
+        display: flex;
+        flex-direction: row;
+        gap: 24px;
+        width: 100%;
+        margin-top: 16px;
+      }
+      .video-thumb {
+        position: relative;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 16 / 9;
+        border-radius: 8px;
+        overflow: hidden;
+        cursor: pointer;
+        color: var(--white);
+        transition: transform 0.2s;
+      }
+      .video-thumb:hover {
+        transform: scale(1.02);
+      }
+      .video-thumb:active {
+        transform: scale(0.98);
+      }
+      .video-thumb video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+        pointer-events: none;
+      }
+      .video-thumb svg {
+        position: relative;
+        z-index: 1;
+        width: 48px;
+        height: auto;
+        filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.4));
+      }
+      .video-thumb .video-date {
+        position: absolute;
+        right: 12px;
+        bottom: 12px;
+        z-index: 2;
+        background: rgba(247, 244, 239, 0.1);
+        color: var(--white);
+        border-radius: 100px;
+        padding: 6px 14px;
+        font-weight: 600;
+        font-size: 14px;
+        backdrop-filter: blur(20px);
+      }
+      @media (max-width: 600px) {
+        .intro-videos {
+          flex-direction: column;
+        }
+      }
+      /* Video lightbox */
+      #videoModal {
+        position: fixed;
+        inset: 0;
+        z-index: 2000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: rgba(2, 3, 3, 0.9);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        cursor: pointer;
+        transition: opacity 0.4s ease;
+      }
+      #videoModal.show {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+      #videoModal iframe {
+        width: min(1000px, 100%);
+        max-width: 100%;
+        aspect-ratio: 16 / 9;
+        height: auto;
+        background: #000;
+        border-radius: 12px;
       }
 
       /* ══════════ COLLAGE ══════════ */
@@ -524,6 +617,10 @@
       }
       .collage-btn:hover {
         background: var(--black);
+      }
+      .collage-btn:active,
+      .collage-btn:visited {
+        color: var(--white);
       }
       @media (max-width: 500px) {
         .collage-btn {
@@ -655,6 +752,165 @@
       .speaker-card-tba .speaker-name,
       .speaker-card-tba .speaker-title {
         opacity: 0.6;
+      }
+
+      /* ══════════ LOCATION ══════════ */
+      .section-location {
+        position: relative;
+        z-index: 4;
+        background: var(--white);
+        color: var(--accent);
+        padding: 5vw 5vw 8vw 5vw;
+      }
+      .location-body {
+        max-width: 990px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+      }
+      .location-body h3 {
+        font-family: "Instrument Serif", Georgia, serif;
+        font-size: clamp(44px, 6vw, 80px);
+        font-weight: 400;
+        line-height: 1em;
+        letter-spacing: -0.04em;
+      }
+      .location-lead {
+        padding-top: 40px;
+        font-size: clamp(20px, 2.4vw, 30px);
+        font-weight: 500;
+        line-height: 1.3;
+      }
+      .location-venue {
+        font-size: clamp(15px, 1.3vw, 18px);
+        line-height: 1.5;
+        max-width: 440px;
+      }
+      .location-venue a {
+        color: var(--accent);
+        text-decoration: none;
+        border-bottom: 2px solid rgba(50, 90, 237, 0.25);
+        transition: border-color 0.3s;
+      }
+      .location-venue a:hover {
+        border-bottom-color: rgba(50, 90, 237, 0.8);
+      }
+      .location-block {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+      }
+      .location-block .location-lead,
+      .location-block .location-venue {
+        margin: 0;
+      }
+      .location-photo {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        border-radius: 8px;
+        text-decoration: none;
+      }
+      .location-photo img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .location-photo-ocean {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+      }
+      .location-slides {
+        position: absolute;
+        inset: 0;
+      }
+      .location-slide {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 1.5s ease;
+        will-change: opacity;
+      }
+      .location-slide.is-active {
+        opacity: 1;
+      }
+      .location-ring {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        width: 20px;
+        height: 20px;
+        z-index: 2;
+        transform: rotate(-90deg);
+        overflow: visible;
+      }
+      .location-ring circle {
+        fill: none;
+        stroke-width: 2;
+        /* viewBox 24, r=11 → use a thin inset so the 2px stroke isn't clipped */
+      }
+      .location-ring-track {
+        stroke: rgba(255, 255, 255, 0.3);
+      }
+      .location-ring-progress {
+        stroke: var(--white);
+        stroke-linecap: round;
+        /* circumference = 2π·11 ≈ 69.115 */
+        stroke-dasharray: 69.115;
+        stroke-dashoffset: 69.115;
+        animation: location-ring-fill 20s linear infinite;
+      }
+      @keyframes location-ring-fill {
+        from {
+          stroke-dashoffset: 69.115;
+        }
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+      .location-photo::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.65) 0%,
+          rgba(0, 0, 0, 0.2) 30%,
+          rgba(0, 0, 0, 0) 55%
+        );
+        pointer-events: none;
+      }
+      .location-photo-meta {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        padding: 24px;
+        text-align: left;
+      }
+      .location-photo-meta .location-small {
+        margin: 0 40px 0 0;
+        color: var(--white);
+        font-size: clamp(12px, 1.2vw, 15px);
+        font-weight: 500;
+        line-height: 1.2;
+      }
+      @media (max-width: 600px) {
+        .location-photo {
+          border-radius: 16px;
+        }
+        .location-photo-meta {
+          padding: 18px;
+        }
       }
 
       /* ══════════ SAYING ══════════ */
@@ -924,7 +1180,7 @@
             <div class="hero-layer-bg">
               <video
                 class="hero-video"
-                src="images/oside-overhead.mp4"
+                src="/images/oside-overhead.mp4"
                 autoplay
                 muted
                 loop
@@ -957,7 +1213,7 @@
                       />
                     </svg>
                   </h1>
-                  <p class="hero-subtitle">Creative tech conference</p>
+                  <p class="hero-subtitle">Creative Tech Conference</p>
                   <div class="hero-date">
                     September 16th-18th &bull; Oceanside, California
                   </div>
@@ -1000,6 +1256,57 @@
               with you.
             </p>
           </div>
+
+          <div class="intro-videos">
+            <div
+              class="video-thumb"
+              data-video="iutMjFg3tqE"
+              role="button"
+              tabindex="0"
+              aria-label="Play 2016 recap video"
+            >
+              <video loop autoplay muted playsinline>
+                <source src="/images/vid-2016.mp4" type="video/mp4" />
+              </video>
+              <svg
+                width="59"
+                height="63"
+                viewBox="0 0 59 63"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M55.7695 26.2322C59.957 28.5022 59.957 34.5119 55.7695 36.7819L8.85943 62.2115C4.86157 64.3787 -2.8624e-06 61.4841 -2.66363e-06 56.9366L-4.40499e-07 6.07743C-2.41722e-07 1.52995 4.86158 -1.36458 8.85944 0.802628L55.7695 26.2322Z"
+                  fill="currentColor"
+                />
+              </svg>
+              <div class="video-date">2016</div>
+            </div>
+            <div
+              class="video-thumb"
+              data-video="dyehGWTfdp8"
+              role="button"
+              tabindex="0"
+              aria-label="Play 2014 recap video"
+            >
+              <video loop autoplay muted playsinline>
+                <source src="/images/vid-2014.mp4" type="video/mp4" />
+              </video>
+              <svg
+                width="59"
+                height="63"
+                viewBox="0 0 59 63"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M55.7695 26.2322C59.957 28.5022 59.957 34.5119 55.7695 36.7819L8.85943 62.2115C4.86157 64.3787 -2.8624e-06 61.4841 -2.66363e-06 56.9366L-4.40499e-07 6.07743C-2.41722e-07 1.52995 4.86158 -1.36458 8.85944 0.802628L55.7695 26.2322Z"
+                  fill="currentColor"
+                />
+              </svg>
+              <div class="video-date">2014</div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1025,6 +1332,42 @@
         <div class="speakers-grid" id="speakersGrid"></div>
       </div>
 
+      <!-- LOCATION -->
+      <div class="section-location" id="sectionLocation">
+        <div class="location-body">
+          <h3>Location</h3>
+
+          <div class="location-block">
+            <p class="location-venue">
+              Our venue this year is the historic
+              <a
+                href="https://oceansidetheatre.org/mission-vision/"
+                target="_blank"
+                rel="noopener"
+                >Sunshine Brooks Theater</a
+              >, just a couple blocks from the beach.
+            </p>
+            <p class="location-lead">
+              Sepetember 16th-18th 2026 in
+              <strong>Oceanside, California</strong>.
+            </p>
+            <div class="location-photo location-photo-ocean">
+              <div class="location-slides" id="locationSlides"></div>
+              <svg class="location-ring" viewBox="0 0 24 24" aria-hidden="true">
+                <circle class="location-ring-track" cx="12" cy="12" r="11" />
+                <circle class="location-ring-progress" cx="12" cy="12" r="11" />
+              </svg>
+              <div class="location-photo-meta">
+                <p class="location-small">
+                  Oceanside is a beautiful beach town just north of San Diego,
+                  California.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- SAYING -->
       <div class="section-saying" id="sectionSaying">
         <div class="saying-body">
@@ -1037,7 +1380,7 @@
               class="quote"
             >
               <img
-                src="images/quotes/gabriel.jpg"
+                src="/images/quotes/gabriel.jpg"
                 alt="Gabriel Valdivia avatar"
               />
               <p>
@@ -1053,7 +1396,7 @@
               rel="noopener"
               class="quote"
             >
-              <img src="images/quotes/sarah.jpg" alt="Sarah Drasner avatar" />
+              <img src="/images/quotes/sarah.jpg" alt="Sarah Drasner avatar" />
               <p>
                 &ldquo;I went this year and it was fantastic. Can't say enough
                 good things about it.&rdquo; <span>&mdash; Sarah Drasner</span>
@@ -1065,7 +1408,7 @@
               rel="noopener"
               class="quote"
             >
-              <img src="images/quotes/juan.jpg" alt="Juan Arreguin avatar" />
+              <img src="/images/quotes/juan.jpg" alt="Juan Arreguin avatar" />
               <p>
                 &ldquo;Guess what? @valiocon is back! It was my first time there
                 in 2011, and it totally changed my life.&rdquo;
@@ -1078,7 +1421,7 @@
               rel="noopener"
               class="quote"
             >
-              <img src="images/quotes/ugur.jpg" alt="Uğur Kaner avatar" />
+              <img src="/images/quotes/ugur.jpg" alt="Uğur Kaner avatar" />
               <p>
                 &ldquo;Had such an amazing experience @valiocon. Feel very
                 inspired &amp; empowered.&rdquo; <span>&mdash; Uğur Kaner</span>
@@ -1220,6 +1563,17 @@
       </div>
     </footer>
 
+    <div id="videoModal">
+      <iframe
+        id="videoModalFrame"
+        width="1000"
+        height="563"
+        frameborder="0"
+        allow="autoplay; fullscreen"
+        allowfullscreen
+      ></iframe>
+    </div>
+
     <script>
       /* ══════════ MOSAIC ══════════ */
       const AVATARS = [
@@ -1275,7 +1629,7 @@
         "willking.jpg",
         "willlenzen.jpg",
       ];
-      const URLS = AVATARS.map((a) => "images/avatars/" + a);
+      const URLS = AVATARS.map((a) => "/images/avatars/" + a);
 
       const mosaicGrid = document.getElementById("mosaicGrid");
       let tiles = [],
@@ -1566,7 +1920,7 @@
         a.href = `https://x.com/${s.twitter}`;
         a.target = "_blank";
         a.rel = "noopener";
-        a.style.backgroundImage = `url('images/speakers/full/${s.twitter}.jpg')`;
+        a.style.backgroundImage = `url('/images/speakers/full/${s.twitter}.jpg')`;
         a.innerHTML = `<div class="speaker-meta"><span class="speaker-name">${s.name}</span><span class="speaker-title">${s.title}</span></div>`;
         spGrid.appendChild(a);
       });
@@ -1575,6 +1929,72 @@
       tba.className = "speaker-card speaker-card-tba";
       tba.innerHTML = `<div class="speaker-meta"><span class="speaker-name">More</span><span class="speaker-title">To be anounced</span></div>`;
       spGrid.appendChild(tba);
+
+      /* ══════════ LOCATION SLIDESHOW ══════════ */
+      (function locationSlideshow() {
+        const wrap = document.getElementById("locationSlides");
+        if (!wrap) return;
+        const imgs = [
+          "oside1.jpg",
+          "oside2.jpg",
+          "oside3.jpg",
+          "oside4.jpg",
+          "oside5.jpg",
+        ];
+        const slides = imgs.map((src, i) => {
+          const el = document.createElement("div");
+          el.className = "location-slide" + (i === 0 ? " is-active" : "");
+          el.style.backgroundImage = `url('/images/${src}')`;
+          wrap.appendChild(el);
+          return el;
+        });
+        // Preload to keep crossfades smooth
+        imgs.forEach((src) => {
+          const im = new Image();
+          im.src = "/images/" + src;
+        });
+        let idx = 0;
+        setInterval(() => {
+          slides[idx].classList.remove("is-active");
+          idx = (idx + 1) % slides.length;
+          slides[idx].classList.add("is-active");
+        }, 4000);
+      })();
+
+      /* ══════════ VIDEO LIGHTBOX ══════════ */
+      (function videoLightbox() {
+        const modal = document.getElementById("videoModal");
+        const frame = document.getElementById("videoModalFrame");
+        if (!modal || !frame) return;
+
+        function open(id) {
+          frame.setAttribute(
+            "src",
+            `https://www.youtube.com/embed/${id}?showinfo=0&autoplay=1`,
+          );
+          modal.classList.add("show");
+        }
+        function close() {
+          modal.classList.remove("show");
+          frame.setAttribute("src", "");
+        }
+
+        document.querySelectorAll(".video-thumb").forEach((thumb) => {
+          const id = thumb.getAttribute("data-video");
+          thumb.addEventListener("click", () => open(id));
+          thumb.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              open(id);
+            }
+          });
+        });
+
+        modal.addEventListener("click", close);
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") close();
+        });
+      })();
     </script>
   </body>
 </html>
