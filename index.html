@@ -60,6 +60,11 @@
         z-index: 2;
       }
 
+      a:visited,
+      a:active {
+        color: inherit;
+      }
+
       /* ══════════ NAV ══════════ */
       .nav {
         position: fixed;
@@ -374,17 +379,16 @@
       }
       .card-txt-div h3 {
         font-family: "Instrument Serif", Georgia, serif;
-        font-size: clamp(50px, 6vw, 80px);
+        font-size: clamp(64px, 8vw, 110px);
         font-weight: 400;
-        line-height: 1em;
+        line-height: 0.9em;
         margin-bottom: 24px;
         letter-spacing: -0.04em;
       }
       .card-txt-div p {
         font-size: clamp(15px, 1.3vw, 18px);
         font-weight: 400;
-        line-height: 1.65;
-        opacity: 0.6;
+        line-height: 1.5;
         max-width: 440px;
       }
       .card-visual-div {
@@ -398,6 +402,98 @@
         align-items: center;
         justify-content: center;
         overflow: hidden;
+      }
+
+      /* ══════════ INTRO ══════════ */
+      .section-intro {
+        position: relative;
+        z-index: 4;
+        background: var(--white);
+        color: var(--accent);
+        padding: 8vw 5vw;
+      }
+      .intro-body {
+        max-width: 640px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+      }
+      .intro-body h3 {
+        font-family: "Instrument Serif", Georgia, serif;
+        font-size: clamp(44px, 6vw, 80px);
+        font-weight: 400;
+        line-height: 1em;
+        letter-spacing: -0.04em;
+        text-align: center;
+      }
+      .intro-text {
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+      .intro-text p {
+        font-size: clamp(17px, 1.5vw, 22px);
+        line-height: 1.6;
+      }
+
+      /* ══════════ COLLAGE ══════════ */
+      .section-collage {
+        position: relative;
+        z-index: 4;
+        height: 500px;
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .collage-photos {
+        position: absolute;
+        height: 100%;
+        width: 5400px;
+        background: transparent url(images/collage.jpg) repeat-x left top;
+        background-size: 1800px 500px;
+        transform: translate3d(0, 0, 0);
+        z-index: 0;
+        animation: collage 60s linear infinite;
+        will-change: transform;
+      }
+      @keyframes collage {
+        0% {
+          transform: translate3d(0, 0, 0);
+        }
+        100% {
+          transform: translate3d(-1800px, 0, 0);
+        }
+      }
+      .collage-btn {
+        position: relative;
+        z-index: 1;
+        background: var(--accent);
+        color: var(--white);
+        font-family: "Instrument Serif", Georgia, serif;
+        font-style: italic;
+        font-size: clamp(32px, 4vw, 44px);
+        line-height: 1;
+        text-decoration: none;
+        padding: 20px 40px;
+        border-radius: 100px;
+        transition:
+          transform 0.2s,
+          background 0.2s,
+          color 0.2s;
+      }
+      .collage-btn:hover {
+        background: var(--black);
+      }
+      @media (max-width: 500px) {
+        .collage-btn {
+          padding: 18px 44px;
+        }
       }
 
       /* ══════════ SPEAKERS ══════════ */
@@ -415,7 +511,7 @@
       }
       .speakers-head h3 {
         font-family: "Instrument Serif", Georgia, serif;
-        font-size: clamp(50px, 6vw, 80px);
+        font-size: clamp(64px, 8vw, 110px);
         font-weight: 400;
         line-height: 1em;
         margin-bottom: 24px;
@@ -423,8 +519,7 @@
       }
       .speakers-head p {
         font-size: clamp(15px, 1.3vw, 18px);
-        line-height: 1.65;
-        opacity: 0.6;
+        line-height: 1.5;
         max-width: 440px;
         margin: 0 auto;
       }
@@ -441,23 +536,15 @@
         aspect-ratio: 1 / 1.4;
         border-radius: 8px;
         overflow: hidden;
+        color: var(--black);
         background-color: rgb(230, 227, 223);
         background-size: cover;
         background-position: center;
         text-decoration: none;
-        opacity: 0;
-        transform: translateY(20px);
         clip-path: inset(8px round 8px);
-        transition:
-          opacity 0.6s ease,
-          transform 0.6s ease,
-          clip-path 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        transition: clip-path 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
       }
-      .speaker-card.show {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .speaker-card.show:hover {
+      .speaker-card:hover {
         clip-path: inset(4px round 8px);
         z-index: 5;
       }
@@ -502,13 +589,13 @@
         bottom: 0;
         z-index: 3;
         padding: 28px;
-        color: var(--black);
       }
       .speaker-meta .speaker-name {
         display: block;
         font-weight: 600;
         font-size: clamp(19px, 2vw, 24px);
         line-height: 1.2;
+        color: var(--black);
       }
       .speaker-meta .speaker-title {
         display: block;
@@ -516,6 +603,99 @@
         font-size: clamp(12px, 1.1vw, 14px);
         opacity: 0.85;
         line-height: 1.3;
+        color: var(--black);
+      }
+      .speaker-card-tba {
+        background-color: rgba(230, 227, 223, 0.5);
+        background-image: none;
+      }
+      .speaker-card-tba:hover {
+        clip-path: inset(8px round 8px);
+        z-index: auto;
+      }
+      .speaker-card-tba::before,
+      .speaker-card-tba::after {
+        display: none;
+      }
+      .speaker-card-tba .speaker-name,
+      .speaker-card-tba .speaker-title {
+        opacity: 0.6;
+      }
+
+      /* ══════════ SAYING ══════════ */
+      .section-saying {
+        position: relative;
+        display: flex;
+        align-items: center;
+        min-height: 90vh;
+        background: var(--accent);
+        padding: 0;
+      }
+      .saying-body {
+        display: flex;
+        flex-direction: column;
+        max-width: 1300px;
+        margin: 0 auto;
+        color: var(--white);
+        overflow: hidden;
+        padding: 100px 60px;
+        gap: 100px;
+      }
+      .saying-body h3 {
+        font-family: "Instrument Serif", Georgia, serif;
+        font-size: clamp(44px, 6vw, 70px);
+        font-weight: 400;
+        line-height: 1em;
+        letter-spacing: -0.04em;
+        text-align: center;
+      }
+      .quotes-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 48px;
+      }
+      .quote {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        font-size: clamp(16px, 1.3vw, 20px);
+        line-height: 1.5;
+        text-align: left;
+        color: var(--white);
+        text-decoration: none;
+      }
+      .quote img {
+        display: block;
+        width: 72px;
+        height: 72px;
+        border-radius: 4px;
+        flex-shrink: 0;
+      }
+      .quote p span {
+        display: block;
+        opacity: 0.55;
+      }
+      @media (max-width: 800px) {
+        .quotes-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 600px) {
+        .saying-body {
+          padding: 48px 32px;
+          gap: 40px;
+        }
+        .quotes-grid {
+          gap: 32px;
+        }
+        .quote {
+          flex-wrap: wrap;
+          gap: 14px;
+        }
+        .quote img {
+          width: 52px;
+          height: 52px;
+        }
       }
 
       /* Topics */
@@ -668,6 +848,119 @@
         </div>
       </div>
 
+      <!-- INTRO -->
+      <div class="section-intro" id="sectionIntro">
+        <div class="intro-body">
+          <h3>The fun conference</h3>
+          <div class="intro-text">
+            <p>
+              This is our seventh annual conference, and each year it gets
+              better and better. Our goal is to inspire you to create and build
+              amazing things.
+            </p>
+            <p>
+              This year’s conference will be on the beach in San Diego,
+              California. We can't think of a better place to connect with
+              friends, old and new, than in a relaxed beach environment with
+              sunny walks on the warm sand, and inspiring talks from people
+              doing amazing things.
+            </p>
+            <p>
+              You'll hear from people who are 'doers' and risk-takers. They’re
+              some of the world’s best designers, founders, investors,
+              engineers, executives, and they all have inspiring stories and
+              valuable insight to share with you.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLLAGE -->
+      <div class="section-collage" id="sectionCollage">
+        <div class="collage-photos"></div>
+        <a
+          href="https://buy.stripe.com/6oU6or1qn2IUaMT3qGenS01"
+          class="collage-btn"
+          >Come join the fun</a
+        >
+      </div>
+
+      <!-- SPEAKERS -->
+      <div class="section-speakers" id="sectionSpeakers">
+        <div class="speakers-head">
+          <h3>Speakers</h3>
+          <p>
+            Designers, founders, and builders that ship. Learn from the best in
+            an intimate and welcoming atmosphere.
+          </p>
+        </div>
+        <div class="speakers-grid" id="speakersGrid"></div>
+      </div>
+
+      <!-- SAYING -->
+      <div class="section-saying" id="sectionSaying">
+        <div class="saying-body">
+          <h3>What people are saying</h3>
+          <div class="quotes-grid">
+            <a
+              href="https://x.com/gabrielvaldivia/status/1876645267350712801"
+              target="_blank"
+              rel="noopener"
+              class="quote"
+            >
+              <img
+                src="images/quotes/gabriel.jpg"
+                alt="Gabriel Valdivia avatar"
+              />
+              <p>
+                &ldquo;&hellip; events like Valiocon foster relationships that
+                will unlock doors for decades to come. I spoke at the last one
+                and made friendships that I cherish to this day.&rdquo;
+                <span>&mdash; Gabriel Valdivia</span>
+              </p>
+            </a>
+            <a
+              href="https://x.com/sarah_edo/status/772192296976519168"
+              target="_blank"
+              rel="noopener"
+              class="quote"
+            >
+              <img src="images/quotes/sarah.jpg" alt="Sarah Drasner avatar" />
+              <p>
+                &ldquo;I went this year and it was fantastic. Can't say enough
+                good things about it.&rdquo; <span>&mdash; Sarah Drasner</span>
+              </p>
+            </a>
+            <a
+              href="https://x.com/JuanArreguin/status/1876434795363966982"
+              target="_blank"
+              rel="noopener"
+              class="quote"
+            >
+              <img src="images/quotes/juan.jpg" alt="Juan Arreguin avatar" />
+              <p>
+                &ldquo;Guess what? @valiocon is back! It was my first time there
+                in 2011, and it totally changed my life.&rdquo;
+                <span>&mdash; Juan Arreguin</span>
+              </p>
+            </a>
+            <a
+              href="https://x.com/ugurkaner/status/734758232464334848"
+              target="_blank"
+              rel="noopener"
+              class="quote"
+            >
+              <img src="images/quotes/ugur.jpg" alt="Uğur Kaner avatar" />
+              <p>
+                &ldquo;Had such an amazing experience @valiocon. Feel very
+                inspired &amp; empowered.&rdquo; <span>&mdash; Uğur Kaner</span>
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- /SAYING -->
+
       <!-- PEOPLE -->
       <div class="section-people" id="sectionPeople">
         <div class="people-bg">
@@ -685,16 +978,35 @@
         </div>
       </div>
 
-      <!-- SPEAKERS -->
-      <div class="section-speakers" id="sectionSpeakers">
-        <div class="speakers-head">
-          <h3>World-Class<br />Speakers</h3>
-          <p>
-            Designers, founders, and builders that ship. Learn from the best in
-            an intimate and welcoming atmosphere.
-          </p>
+      <div class="section-intro" id="sectionIntro">
+        <div class="intro-body">
+          <h3>What's included</h3>
+          <div class="intro-text">
+            <p>
+              Your ticket comes with a lot more than just entrance to the
+              conference. You'll also get free breakfast every day, access to
+              multiple evening events, Valio Con swag, including the official
+              2026 t-shirt, and a chance to win some cool stuff multiple times
+              each day. If you’ve been to Valio Con before, you know we really
+              love giving away tons of prizes!
+            </p>
+            <p>
+              Tickets do not include a hotel stay, you must book that
+              separately. We reccomend the
+              <a
+                href="https://www.theseabirdresort.com/"
+                target="_blank"
+                rel="noopener"
+                >Seabird resort</a
+              >.
+            </p>
+            <p>
+              We'll also be doing a bunch of fun activities, like: an evening
+              bonfire with s’mores, morning photo walks, surf sessions, and
+              more!
+            </p>
+          </div>
         </div>
-        <div class="speakers-grid" id="speakersGrid"></div>
       </div>
 
       <!-- CARDS -->
@@ -702,10 +1014,10 @@
         <div class="card" id="lastCard">
           <div class="card-inner" id="lastCardInner" data-reveal>
             <div class="card-txt-div" id="lastCardTxt">
-              <h3>Curated<br />Sessions</h3>
-              <p>
-                The discussions at our seventh annual conference will shape the
-                future of design and tech. Come be a part of it.
+              <h3>Shape the<br />Future</h3>
+              <p class="cta-subtext">
+                Be apart of the discussions that will shape the future of design
+                and tech.
               </p>
             </div>
             <div class="cta-layer-1" id="ctaL1">
@@ -987,42 +1299,42 @@
         {
           name: "Andreas Weiland",
           twitter: "aweiland",
-          title: "Title TBD",
+          title: "Design Principal Sequoia Capital",
         },
         {
           name: "Flora Guo",
           twitter: "floguo",
-          title: "Title TBD",
+          title: "Design Engineer at Paradigm",
         },
         {
           name: "Reijo Palmiste",
           twitter: "reijowrites",
-          title: "Title TBD",
+          title: "Designer and 3D Illustrator",
         },
         {
           name: "Grace Walker",
           twitter: "graceongrid",
-          title: "Title TBD",
+          title: "Creative Director at Spellbook Legal",
         },
         {
           name: "Dan Hollick",
           twitter: "danhollick",
-          title: "Title TBD",
+          title: "Design Engineer at Cursor",
         },
         {
           name: "Michael Riddering",
           twitter: "ridd_design",
-          title: "Title TBD",
+          title: "Building Inflight, Podcasting at Dive Club",
         },
         {
           name: "Will Lenzen",
           twitter: "willlenzen",
-          title: "Title TBD",
+          title: "Head of Design at Sunbound",
         },
         {
           name: "Escha",
           twitter: "eschadiol",
-          title: "Title TBD",
+          title: "Product & Design at Perplexity",
         },
         {
           name: "Genny Dee",
@@ -1032,7 +1344,7 @@
         {
           name: "Mackey Saturday",
           twitter: "saturday",
-          title: "Identity design",
+          title: "Identity Designer",
         },
         {
           name: "Rocky Roark",
@@ -1062,21 +1374,10 @@
         spGrid.appendChild(a);
       });
 
-      const spObs = new IntersectionObserver(
-        (entries, ob) => {
-          entries.forEach((e) => {
-            if (!e.isIntersecting) return;
-            const cards = Array.from(spGrid.querySelectorAll(".speaker-card"));
-            setTimeout(
-              () => e.target.classList.add("show"),
-              cards.indexOf(e.target) * 60,
-            );
-            ob.unobserve(e.target);
-          });
-        },
-        { threshold: 0.15 },
-      );
-      spGrid.querySelectorAll(".speaker-card").forEach((c) => spObs.observe(c));
+      const tba = document.createElement("div");
+      tba.className = "speaker-card speaker-card-tba";
+      tba.innerHTML = `<div class="speaker-meta"><span class="speaker-name">More</span><span class="speaker-title">To be anounced</span></div>`;
+      spGrid.appendChild(tba);
     </script>
   </body>
 </html>
