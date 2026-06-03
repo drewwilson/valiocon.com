@@ -114,42 +114,77 @@
         background: var(--accent);
       }
 
-      .top-buttons {
-        display: flex;
-        width: 100%;
-        top: 0;
+      /* ══════════ HEADER ══════════ */
+      /* #header-bg {
         position: fixed;
-        z-index: 1000;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px;
-      }
-
-      .top-button {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 110px;
+        z-index: 998;
+        mask: linear-gradient(black, black, transparent);
+        -webkit-mask: linear-gradient(black, black, transparent);
+        backdrop-filter: blur(45px);
+        -webkit-backdrop-filter: blur(45px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease;
+      } */
+      #header {
+        position: fixed;
+        top: 0;
+        left: 0;
         display: flex;
-        margin-bottom: 20px;
+        flex-direction: row;
         align-items: center;
-        gap: 8px;
-        color: var(--white);
-        background: var(--accent);
-        border-radius: 100px;
-        padding: 6px 16px;
-        font-size: 14px;
+        justify-content: space-between;
+        gap: 40px;
+        width: 100%;
+        font-size: 16px;
+        padding: 16px 24px 50px 24px;
+        color: var(--black);
+        z-index: 999;
+        opacity: 0;
+        transform: translateY(-12px);
+        pointer-events: none;
+        transition:
+          opacity 0.4s ease,
+          transform 0.4s ease;
+      }
+      #header.visible,
+      #header-bg.visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      #header.visible {
+        transform: translateY(0);
+      }
+      #header .badge {
+        width: 46px;
+        height: 42px;
+        display: block;
+      }
+      /* #header .right {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 50px;
+      }
+      #header a {
+        color: var(--accent);
+        text-decoration: none;
         font-weight: 600;
       }
-      .top-button.outline {
-        color: var(--accent);
-        background: var(--white);
-        border: 1px solid var(--accent);
+      #header a .reg {
+        text-decoration: underline;
+        text-decoration-thickness: 1.5px;
+        text-underline-offset: 3px;
+        text-decoration-color: rgba(50, 90, 237, 0.25);
+        transition: text-decoration-color 0.5s;
       }
-      .top-button a {
-        color: inherit;
-        text-decoration: none;
-      }
-      .top-button svg {
-        width: 16px;
-        height: 16px;
-      }
+      #header a:hover .reg {
+        text-decoration-color: rgba(50, 90, 237, 0.8);
+      } */
 
       .section-hero {
         position: relative;
@@ -734,6 +769,71 @@
         padding: 0 24px;
         line-height: 1.5;
       }
+      /* ══════════ FOOTER ══════════ */
+      footer {
+        position: relative;
+        z-index: 5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 100px;
+        padding: 140px 60px 200px 60px;
+        width: 100%;
+        color: var(--accent);
+        background: var(--white) url(images/footer-bg.jpg) center no-repeat;
+        background-size: cover;
+        text-align: center;
+      }
+      footer .badge {
+        width: 117px;
+        height: auto;
+        color: var(--accent);
+      }
+      footer .bottom {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 60px;
+      }
+      footer .bottom > * {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 60px;
+      }
+      footer a {
+        color: inherit;
+        text-decoration: none;
+      }
+      footer .button-small {
+        gap: 12px;
+        padding: 10px 20px;
+        font-weight: 500;
+        border: 1px solid var(--accent);
+        border-radius: 100px;
+        transition: background 0.2s;
+      }
+      footer .button-small:hover {
+        background: var(--accent);
+        color: var(--white);
+      }
+      footer .very-bottom a {
+        text-decoration: underline;
+      }
+      @media (max-width: 500px) {
+        footer {
+          padding: 100px 30px 200px 30px;
+          gap: 60px;
+        }
+        footer .bottom > * {
+          gap: 30px;
+        }
+      }
+
       /* ══════════ RESPONSIVE ══════════ */
       @media (max-width: 1168px) {
         .card-inner {
@@ -777,17 +877,45 @@
       >
     </nav>
 
-    <div class="top-buttons">
-      <div class="top-button outline">
-        <a href="/2025">See 2025</a>
-      </div>
-      <div class="top-button outline">
-        <a
-          href="https://south-lamprey-4d4.notion.site/Valio-Con-2026-Sponsorships-b5a9af2d244682f0881581075bd86794"
-          >Sponsor Us</a
+    <!-- <div id="header-bg"></div> -->
+    <header id="header">
+      <div class="left">
+        <svg
+          class="badge"
+          width="100%"
+          viewBox="0 0 70 64"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
         >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            fill="currentColor"
+            d="M26.366,33.021c0,0,0.859,0.201,1.312-0.97
+              c0.165-0.425-5.831-11.568-6.226-11.458c-0.65,0.183-1.567,0.383-1.605,1.1C19.786,22.853,25.134,32.421,26.366,33.021z
+              M38.26,31.167c0.782-0.065,4.061-12.882,3.825-14.142c0,0-0.927-0.337-1.588-0.186c-0.648,0.15-3.909,13.75-3.702,13.943
+              C37.172,31.134,37.529,31.227,38.26,31.167z M32.908,30.468c0.229-0.38-0.866-8.494-1.47-8.573
+              c-0.605-0.08-1.058-0.235-1.287,0.146c-0.229,0.381,1.245,8.266,1.395,8.573C31.696,30.921,32.68,30.85,32.908,30.468z
+              M43.188,32.761c0.674-0.044,4.715-5.863,4.525-6.407c-0.129-0.371-0.427-0.174-0.81-0.367c-0.264-0.134-4.612,5.22-4.38,5.795
+              C42.681,32.167,42.831,32.785,43.188,32.761z M67.757,24.75c0,0-30.598-27.805-34.485-24.466c0,0-43.506,24.237-30.951,38.96
+              c0,0,30.598,27.807,34.486,24.467C36.807,63.711,80.313,39.473,67.757,24.75z M36.52,59.938
+              C33.264,62.734,5.332,38.066,5.332,38.066c-10.515-12.33,28.227-34.01,28.227-34.01c3.255-2.797,31.186,21.872,31.186,21.872
+              C75.261,38.258,36.52,59.938,36.52,59.938z M53.412,30.946c-0.927-0.25-7.582,4.301-7.608,4.971
+              c-0.018,0.457,0.645,1.207,1.174,1.541c0.29,0.186,6.717-3.83,7.191-4.371C54.644,32.545,54.34,31.198,53.412,30.946z
+              M35.918,33.868c-12.097-0.558-12.824,8.286-12.372,8.896c1.219,1.645,21.63,1.006,21.995,0.557
+              C46.207,42.496,45.257,34.296,35.918,33.868z M18.293,30.93c-0.55-0.278-1.588,0.277-1.588,1.111s5.216,5.411,5.773,5.284
+              c0.379-0.088,0.847-0.811,1.004-1.328C23.569,35.712,18.843,31.208,18.293,30.93z"
+          />
+        </svg>
       </div>
-    </div>
+      <!--
+      <div class="right">
+        <a href="https://buy.stripe.com/6oU6or1qn2IUaMT3qGenS01">
+          <span class="reg">Register</span>
+        </a>
+      </div>
+      -->
+    </header>
 
     <div class="main-content">
       <div class="section-hero" id="sectionHero">
@@ -838,8 +966,8 @@
               <div class="hero-txt-item" id="ht1">
                 <div class="hero-txt-center">
                   <p class="hero-body-text">
-                    Valio Con is where real connections are made. Real
-                    conversations. Real people. Really fun.
+                    Valio Con is where real connections are made.<br /><br />Real
+                    conversations.<br />Real people. Really fun.
                   </p>
                 </div>
               </div>
@@ -859,7 +987,7 @@
               amazing things.
             </p>
             <p>
-              This year’s conference will be on the beach in San Diego,
+              This year’s conference will be on the beach in Oceanside,
               California. We can't think of a better place to connect with
               friends, old and new, than in a relaxed beach environment with
               sunny walks on the warm sand, and inspiring talks from people
@@ -867,9 +995,9 @@
             </p>
             <p>
               You'll hear from people who are 'doers' and risk-takers. They’re
-              some of the world’s best designers, founders, investors,
-              engineers, executives, and they all have inspiring stories and
-              valuable insight to share with you.
+              some of the world’s best designers, founders, builders, engineers,
+              and they all have inspiring stories and valuable insight to share
+              with you.
             </p>
           </div>
         </div>
@@ -983,16 +1111,15 @@
           <h3>What's included</h3>
           <div class="intro-text">
             <p>
-              Your ticket comes with a lot more than just entrance to the
-              conference. You'll also get free breakfast every day, access to
-              multiple evening events, Valio Con swag, including the official
-              2026 t-shirt, and a chance to win some cool stuff multiple times
-              each day. If you’ve been to Valio Con before, you know we really
-              love giving away tons of prizes!
+              Your ticket comes with more than just entrance to the conference.
+              You'll also get access to our evening events, Valio Con swag,
+              including the official 2026 t-shirt, and a chance to win some cool
+              stuff multiple times each day. If you’ve been to Valio Con before,
+              you know we really love giving away tons of prizes!
             </p>
             <p>
               Tickets do not include a hotel stay, you must book that
-              separately. We reccomend the
+              separately. We recommend the
               <a
                 href="https://www.theseabirdresort.com/"
                 target="_blank"
@@ -1001,9 +1128,9 @@
               >.
             </p>
             <p>
-              We'll also be doing a bunch of fun activities, like: an evening
-              bonfire with s’mores, morning photo walks, surf sessions, and
-              more!
+              We've got fun activities lined up so you can hang with new and old
+              friends, like: a bonfire with s’mores, morning photo walks, surf
+              sessions, and more!
             </p>
           </div>
         </div>
@@ -1029,6 +1156,69 @@
         <div id="cardSpacer" style="height: 200vh"></div>
       </div>
     </div>
+
+    <footer>
+      <svg
+        class="badge"
+        width="100%"
+        viewBox="0 0 70 64"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          fill="currentColor"
+          d="M26.366,33.021c0,0,0.859,0.201,1.312-0.97
+            c0.165-0.425-5.831-11.568-6.226-11.458c-0.65,0.183-1.567,0.383-1.605,1.1C19.786,22.853,25.134,32.421,26.366,33.021z
+            M38.26,31.167c0.782-0.065,4.061-12.882,3.825-14.142c0,0-0.927-0.337-1.588-0.186c-0.648,0.15-3.909,13.75-3.702,13.943
+            C37.172,31.134,37.529,31.227,38.26,31.167z M32.908,30.468c0.229-0.38-0.866-8.494-1.47-8.573
+            c-0.605-0.08-1.058-0.235-1.287,0.146c-0.229,0.381,1.245,8.266,1.395,8.573C31.696,30.921,32.68,30.85,32.908,30.468z
+            M43.188,32.761c0.674-0.044,4.715-5.863,4.525-6.407c-0.129-0.371-0.427-0.174-0.81-0.367c-0.264-0.134-4.612,5.22-4.38,5.795
+            C42.681,32.167,42.831,32.785,43.188,32.761z M67.757,24.75c0,0-30.598-27.805-34.485-24.466c0,0-43.506,24.237-30.951,38.96
+            c0,0,30.598,27.807,34.486,24.467C36.807,63.711,80.313,39.473,67.757,24.75z M36.52,59.938
+            C33.264,62.734,5.332,38.066,5.332,38.066c-10.515-12.33,28.227-34.01,28.227-34.01c3.255-2.797,31.186,21.872,31.186,21.872
+            C75.261,38.258,36.52,59.938,36.52,59.938z M53.412,30.946c-0.927-0.25-7.582,4.301-7.608,4.971
+            c-0.018,0.457,0.645,1.207,1.174,1.541c0.29,0.186,6.717-3.83,7.191-4.371C54.644,32.545,54.34,31.198,53.412,30.946z
+            M35.918,33.868c-12.097-0.558-12.824,8.286-12.372,8.896c1.219,1.645,21.63,1.006,21.995,0.557
+            C46.207,42.496,45.257,34.296,35.918,33.868z M18.293,30.93c-0.55-0.278-1.588,0.277-1.588,1.111s5.216,5.411,5.773,5.284
+            c0.379-0.088,0.847-0.811,1.004-1.328C23.569,35.712,18.843,31.208,18.293,30.93z"
+        />
+      </svg>
+
+      <div class="bottom">
+        <p>
+          Creative Tech Conference &bull; September 16th-18th &bull; Oceanside,
+          California
+        </p>
+
+        <div>
+          <a
+            href="https://south-lamprey-4d4.notion.site/Valio-Con-2026-Sponsorships-b5a9af2d244682f0881581075bd86794"
+            class="button-small"
+            >Become a Sponsor</a
+          >
+          <a href="https://x.com/valiocon" class="button-small"
+            >Connect with @valiocon</a
+          >
+        </div>
+
+        <div class="very-bottom">
+          <p>
+            Brought to you by
+            <a href="https://x.com/drewwilson">Drew Wilson</a>
+          </p>
+          <p>
+            <a href="https://valiocon.com/2025" target="_blank">2025</a> /
+            <a href="https://valiocon.com/2016" target="_blank">2016</a> /
+            <a href="https://valiocon.com/2014" target="_blank">2014</a> /
+            <a href="https://valiocon.com/2013" target="_blank">2013</a> /
+            <a href="https://valiocon.com/2012" target="_blank">2012</a> /
+            <a href="https://valiocon.com/2011" target="_blank">2011</a>
+          </p>
+        </div>
+      </div>
+    </footer>
 
     <script>
       /* ══════════ MOSAIC ══════════ */
@@ -1188,6 +1378,8 @@
       const lastCardTxt = document.getElementById("lastCardTxt");
       const cardSpacer = document.getElementById("cardSpacer");
       const allCards = Array.from(document.querySelectorAll(".card"));
+      const header = document.getElementById("header");
+      // const headerBg = document.getElementById("header-bg");
 
       function clamp(v, lo, hi) {
         return Math.max(lo, Math.min(hi, v));
@@ -1250,6 +1442,11 @@
           ht[1].style.transform = `scale(${t1_scale}) translateY(${t1_y}px)`;
           ht[1].style.filter = t1_blur > 0.1 ? `blur(${t1_blur}px)` : "none";
           ht[1].classList.toggle("is-active", o1 > 0.1);
+
+          // Reveal the header once the "real connections" text appears
+          const showHeader = o1 > 0.1;
+          header.classList.toggle("visible", showHeader);
+          // headerBg.classList.toggle("visible", showHeader);
         }
 
         // ── Card depth effect ──
