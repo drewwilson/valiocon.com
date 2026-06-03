@@ -38,7 +38,7 @@
         box-sizing: border-box;
       }
       :root {
-        --black: #28292a;
+        --black: #202021;
         --white: #f7f4ef;
         --accent: #325aed;
       }
@@ -186,6 +186,24 @@
         z-index: 1;
         overflow: hidden;
       }
+      .hero-video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .mosaic-overlay {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(247, 244, 239, 0.6) 0%,
+          rgba(247, 244, 239, 0.3) 50%,
+          rgba(247, 244, 239, 0.8) 100%
+        );
+        pointer-events: none;
+      }
       .mosaic-container {
         position: absolute;
         inset: 0;
@@ -216,9 +234,9 @@
         inset: 0;
         background: radial-gradient(
           ellipse at center,
-          rgba(247, 244, 239, 0.6) 0%,
-          rgba(247, 244, 239, 0.3) 50%,
-          rgba(247, 244, 239, 0.8) 100%
+          rgba(247, 244, 239, 0.9) 0%,
+          rgba(247, 244, 239, 0.8) 50%,
+          rgba(247, 244, 239, 0.5) 100%
         );
         pointer-events: none;
       }
@@ -273,6 +291,35 @@
         font-weight: 500;
       }
 
+      /* ══════════ PEOPLE ══════════ */
+      .section-people {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: var(--white);
+        color: var(--accent);
+        padding: 80px 24px;
+      }
+      .people-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        overflow: hidden;
+      }
+      .people-inner {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
       /* ══════════ CARDS  ══════════ */
       .section-cards {
         position: relative;
@@ -312,16 +359,10 @@
         text-align: center;
         padding: 80px 40px;
       }
-      .card:nth-child(1) .card-inner {
-        background: rgb(198, 204, 227);
-      }
-      .card:nth-child(2) .card-inner {
-        background: rgb(156, 171, 224);
-      }
-      .card:nth-child(3) .card-inner {
+      #lastCard .card-inner {
         background: var(--accent);
       }
-      .card:nth-child(3) {
+      #lastCard {
         color: var(--white);
       }
       .card-txt-div {
@@ -359,61 +400,122 @@
         overflow: hidden;
       }
 
-      /* Speakers card: left text / right speakers */
-      .card:nth-child(2) .card-inner {
-        flex-direction: row;
-        text-align: left;
-        padding: 60px 100px;
-      }
-      .card:nth-child(2) .card-txt-div {
-        align-items: flex-start;
-        width: 50%;
-        flex-shrink: 0;
-      }
-      .card:nth-child(2) .card-visual-div {
+      /* ══════════ SPEAKERS ══════════ */
+      .section-speakers {
         position: relative;
-        width: 50%;
+        z-index: 4;
+        background: var(--white);
+        color: var(--accent);
+        padding: 8vw 5vw;
       }
-
-      /* Speaker pills */
+      .speakers-head {
+        max-width: 800px;
+        margin: 0 auto 48px;
+        text-align: center;
+      }
+      .speakers-head h3 {
+        font-family: "Instrument Serif", Georgia, serif;
+        font-size: clamp(50px, 6vw, 80px);
+        font-weight: 400;
+        line-height: 1em;
+        margin-bottom: 24px;
+        letter-spacing: -0.04em;
+      }
+      .speakers-head p {
+        font-size: clamp(15px, 1.3vw, 18px);
+        line-height: 1.65;
+        opacity: 0.6;
+        max-width: 440px;
+        margin: 0 auto;
+      }
       .speakers-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        padding: 40px 30px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+        max-width: 1100px;
+        margin: 0 auto;
       }
-      .speaker-pill {
-        color: inherit;
+      .speaker-card {
+        position: relative;
+        display: block;
+        aspect-ratio: 1 / 1.4;
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: rgb(230, 227, 223);
+        background-size: cover;
+        background-position: center;
         text-decoration: none;
-        background: rgba(50, 90, 237, 0.1);
-        border-radius: 2px;
-        padding: 10px 18px 10px 10px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-weight: 500;
-        white-space: nowrap;
         opacity: 0;
-        transform: translateY(16px);
+        transform: translateY(20px);
+        clip-path: inset(8px round 8px);
         transition:
-          opacity 0.5s ease,
-          transform 0.5s ease;
+          opacity 0.6s ease,
+          transform 0.6s ease,
+          clip-path 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
       }
-      .speaker-pill.show {
+      .speaker-card.show {
         opacity: 1;
         transform: translateY(0);
       }
-      .speaker-pill.more {
-        padding: 10px 18px;
-        background: none;
-        color: var(--accent);
-        border: 1px solid var(--accent);
+      .speaker-card.show:hover {
+        clip-path: inset(4px round 8px);
+        z-index: 5;
       }
-      .speaker-avatar {
-        width: 34px;
-        height: 34px;
-        background-size: cover;
-        border-radius: 2px;
+      .speaker-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        -webkit-mask-image: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 1) 10%,
+          rgba(0, 0, 0, 0) 20%
+        );
+        mask-image: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 1) 10%,
+          rgba(0, 0, 0, 0) 20%
+        );
+        pointer-events: none;
+      }
+      .speaker-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        background: linear-gradient(
+          to top,
+          rgba(247, 244, 239, 0.8) 0%,
+          rgba(247, 244, 239, 0.25) 45%,
+          rgba(247, 244, 239, 0) 55%
+        );
+        pointer-events: none;
+      }
+      .speaker-meta {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 3;
+        padding: 28px;
+        color: var(--black);
+      }
+      .speaker-meta .speaker-name {
+        display: block;
+        font-weight: 600;
+        font-size: clamp(19px, 2vw, 24px);
+        line-height: 1.2;
+      }
+      .speaker-meta .speaker-title {
+        display: block;
+        margin-top: 4px;
+        font-size: clamp(12px, 1.1vw, 14px);
+        opacity: 0.85;
+        line-height: 1.3;
       }
 
       /* Topics */
@@ -463,21 +565,6 @@
           width: 100%;
           height: 50%;
         }
-        .card:nth-child(2) .card-inner {
-          flex-direction: column;
-          text-align: center;
-          padding: 40px 28px;
-        }
-        .card:nth-child(2) .card-txt-div {
-          align-items: center;
-          width: 100%;
-        }
-        .card:nth-child(2) .card-visual-div {
-          width: 100%;
-        }
-        .speakers-grid {
-          justify-content: center;
-        }
       }
       @media (max-width: 768px) {
         .hero-body-text {
@@ -490,16 +577,14 @@
           grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
           grid-template-rows: repeat(auto-fill, minmax(60px, 1fr));
         }
-      }
-      @media (max-width: 600px) {
         .speakers-grid {
-          padding: 0;
+          grid-template-columns: repeat(2, 1fr);
         }
-        .speaker-pill {
-          padding: 10px;
-        }
-        .speaker-name {
-          display: none;
+      }
+      @media (max-width: 480px) {
+        .speakers-grid {
+          grid-template-columns: 1fr;
+          max-width: 360px;
         }
       }
     </style>
@@ -529,7 +614,14 @@
         <div class="hero-outer" id="heroOuter">
           <div class="hero-inner">
             <div class="hero-layer-bg">
-              <div class="mosaic-container" id="mosaicGrid"></div>
+              <video
+                class="hero-video"
+                src="images/oside-overhead.mp4"
+                autoplay
+                muted
+                loop
+                playsinline
+              ></video>
               <div class="hero-overlay"></div>
             </div>
             <div class="hero-layer-text">
@@ -576,33 +668,37 @@
         </div>
       </div>
 
+      <!-- PEOPLE -->
+      <div class="section-people" id="sectionPeople">
+        <div class="people-bg">
+          <div class="mosaic-container" id="mosaicGrid"></div>
+          <div class="mosaic-overlay"></div>
+        </div>
+        <div class="people-inner">
+          <div class="card-txt-div">
+            <h3>Your<br />People</h3>
+            <p>
+              100+ of the world's best creatives in one room. Designers,
+              builders, product, and tech folk, all together on the beach.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPEAKERS -->
+      <div class="section-speakers" id="sectionSpeakers">
+        <div class="speakers-head">
+          <h3>World-Class<br />Speakers</h3>
+          <p>
+            Designers, founders, and builders that ship. Learn from the best in
+            an intimate and welcoming atmosphere.
+          </p>
+        </div>
+        <div class="speakers-grid" id="speakersGrid"></div>
+      </div>
+
       <!-- CARDS -->
       <div class="section-cards">
-        <div class="card">
-          <div class="card-inner" data-reveal>
-            <div class="card-txt-div">
-              <h3>Your<br />People</h3>
-              <p>
-                100+ of the world's best creatives in one room. Designers,
-                builders, product, and tech folk, all together on the beach.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-inner" data-reveal>
-            <div class="card-txt-div">
-              <h3>World-Class<br />Speakers</h3>
-              <p>
-                Designers, founders, and builders that ship. Learn from the best
-                in an intimate and welcoming atmosphere.
-              </p>
-            </div>
-            <div class="card-visual-div">
-              <div class="speakers-grid" id="speakersGrid"></div>
-            </div>
-          </div>
-        </div>
         <div class="card" id="lastCard">
           <div class="card-inner" id="lastCardInner" data-reveal>
             <div class="card-txt-div" id="lastCardTxt">
@@ -725,8 +821,8 @@
         bTimers.push(setTimeout(() => breathe(t), 800 + Math.random() * 2000));
       }
 
-      const heroOuter = document.getElementById("heroOuter");
-      heroOuter.addEventListener(
+      const mosaicHost = document.getElementById("sectionPeople");
+      mosaicHost.addEventListener(
         "mousemove",
         (e) => {
           mx = e.clientX;
@@ -734,7 +830,7 @@
         },
         { passive: true },
       );
-      heroOuter.addEventListener("mouseleave", () => {
+      mosaicHost.addEventListener("mouseleave", () => {
         mx = -9999;
         tiles.forEach((t) => t.el.style.setProperty("--hover-boost", "0"));
       });
@@ -885,90 +981,102 @@
       window.addEventListener("scroll", onScroll, { passive: true });
       onScroll();
 
-      /* ══════════ CARD REVEALS ══════════ */
-      const obs = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((e) => {
-            if (!e.isIntersecting) return;
-            e.target
-              .querySelectorAll(".speaker-pill")
-              .forEach((p, i) =>
-                setTimeout(() => p.classList.add("show"), i * 80),
-              );
-          });
-        },
-        { threshold: 0.3 },
-      );
-      document
-        .querySelectorAll("[data-reveal]")
-        .forEach((el) => obs.observe(el));
-
       /* ══════════ POPULATE ══════════ */
       var spGrid = document.getElementById("speakersGrid");
       var speakers = [
         {
           name: "Andreas Weiland",
           twitter: "aweiland",
+          title: "Title TBD",
         },
         {
           name: "Flora Guo",
           twitter: "floguo",
+          title: "Title TBD",
         },
         {
           name: "Reijo Palmiste",
           twitter: "reijowrites",
+          title: "Title TBD",
         },
         {
           name: "Grace Walker",
           twitter: "graceongrid",
+          title: "Title TBD",
         },
         {
           name: "Dan Hollick",
           twitter: "danhollick",
+          title: "Title TBD",
         },
         {
           name: "Michael Riddering",
           twitter: "ridd_design",
+          title: "Title TBD",
         },
         {
           name: "Will Lenzen",
           twitter: "willlenzen",
+          title: "Title TBD",
         },
         {
           name: "Escha",
           twitter: "eschadiol",
+          title: "Title TBD",
         },
         {
           name: "Genny Dee",
           twitter: "gennyxdavila",
+          title: "Design & Brand leader at Railway",
         },
         {
           name: "Mackey Saturday",
           twitter: "saturday",
+          title: "Identity design",
         },
         {
           name: "Rocky Roark",
           twitter: "rockyroark",
+          title: "Brand & Strategy at Blue Cyclops",
         },
         {
           name: "Brian Benitez",
           twitter: "notorioususb",
+          title: "Brand at Opacity, Founder at TDF",
+        },
+        {
+          name: "Maheen Sohail",
+          twitter: "maheen_sohail",
+          title: "Leading AI at Instagram",
         },
       ];
       speakers.sort(() => Math.random() - 0.5);
       speakers.forEach((s) => {
         const a = document.createElement("a");
-        a.className = "speaker-pill";
+        a.className = "speaker-card";
         a.href = `https://x.com/${s.twitter}`;
         a.target = "_blank";
         a.rel = "noopener";
-        a.innerHTML = `<div class="speaker-avatar" style="background-image: url('/images/speakers/${s.twitter}.jpg')"></div><span class="speaker-name">${s.name}</span>`;
+        a.style.backgroundImage = `url('images/speakers/full/${s.twitter}.jpg')`;
+        a.innerHTML = `<div class="speaker-meta"><span class="speaker-name">${s.name}</span><span class="speaker-title">${s.title}</span></div>`;
         spGrid.appendChild(a);
       });
-      spGrid.insertAdjacentHTML(
-        "beforeend",
-        '<div class="speaker-pill more">More announced soon</div>',
+
+      const spObs = new IntersectionObserver(
+        (entries, ob) => {
+          entries.forEach((e) => {
+            if (!e.isIntersecting) return;
+            const cards = Array.from(spGrid.querySelectorAll(".speaker-card"));
+            setTimeout(
+              () => e.target.classList.add("show"),
+              cards.indexOf(e.target) * 60,
+            );
+            ob.unobserve(e.target);
+          });
+        },
+        { threshold: 0.15 },
       );
+      spGrid.querySelectorAll(".speaker-card").forEach((c) => spObs.observe(c));
     </script>
   </body>
 </html>
