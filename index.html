@@ -320,19 +320,24 @@
       .hero-subtitle {
         line-height: 1em;
         letter-spacing: -0.5px;
-        font-size: clamp(32px, 9vw, 32px);
+        font-size: clamp(30px, 9vw, 30px);
         font-weight: 500;
         margin-top: 20px;
       }
       .hero-body-text {
         line-height: 1.1em;
         letter-spacing: -2px;
-        font-size: clamp(24px, 6.4vw, 80px);
+        font-size: clamp(32px, 6.4vw, 80px);
         font-weight: 500;
         max-width: 800px;
       }
       .hero-date {
         font-weight: 500;
+      }
+      @media (max-width: 440px) {
+        #ht0 .hero-txt-center {
+          margin-top: -50px;
+        }
       }
 
       /* ══════════ PEOPLE ══════════ */
@@ -449,7 +454,7 @@
         z-index: 4;
         background: var(--white);
         color: var(--accent);
-        padding: 8vw 5vw 12vw 5vw;
+        padding: 12vw 5vw;
       }
       .intro-body {
         max-width: 640px;
@@ -461,7 +466,7 @@
       }
       .intro-body h3 {
         font-family: "Instrument Serif", Georgia, serif;
-        font-size: clamp(44px, 6vw, 80px);
+        font-size: clamp(52px, 6vw, 80px);
         font-weight: 400;
         line-height: 1em;
         letter-spacing: -0.04em;
@@ -634,7 +639,7 @@
         z-index: 4;
         background: var(--white);
         color: var(--accent);
-        padding: 8vw 5vw;
+        padding: 12vw 5vw;
       }
       .speakers-head {
         max-width: 800px;
@@ -760,7 +765,7 @@
         z-index: 4;
         background: var(--white);
         color: var(--accent);
-        padding: 5vw 5vw 8vw 5vw;
+        padding: 12vw 5vw;
       }
       .location-body {
         max-width: 990px;
@@ -773,7 +778,7 @@
       }
       .location-body h3 {
         font-family: "Instrument Serif", Georgia, serif;
-        font-size: clamp(44px, 6vw, 80px);
+        font-size: clamp(64px, 8vw, 110px);
         font-weight: 400;
         line-height: 1em;
         letter-spacing: -0.04em;
@@ -929,7 +934,7 @@
         margin: 0 auto;
         color: var(--white);
         overflow: hidden;
-        padding: 100px 60px;
+        padding: 12vw 5vw;
         gap: 100px;
       }
       .saying-body h3 {
@@ -973,7 +978,7 @@
       }
       @media (max-width: 600px) {
         .saying-body {
-          padding: 48px 32px;
+          padding: 14vw 8vw;
           gap: 40px;
         }
         .quotes-grid {
@@ -1080,7 +1085,7 @@
       footer .very-bottom a {
         text-decoration: underline;
       }
-      @media (max-width: 500px) {
+      @media (max-width: 600px) {
         footer {
           padding: 100px 30px 200px 30px;
           gap: 60px;
