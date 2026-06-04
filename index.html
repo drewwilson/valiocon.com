@@ -198,6 +198,7 @@
         position: sticky;
         top: 0;
         height: 100vh;
+        height: 100svh;
         overflow: hidden;
       }
       .hero-inner {
@@ -346,6 +347,7 @@
         z-index: 3;
         width: 100%;
         min-height: 100vh;
+        min-height: 100svh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -380,6 +382,7 @@
         position: sticky;
         top: 0;
         height: 100vh;
+        height: 100svh;
         padding-top: 5vw;
         color: var(--accent);
       }
@@ -1711,14 +1714,6 @@
         requestAnimationFrame(proxLoop);
       })();
       buildMosaic();
-      let rt;
-      window.addEventListener("resize", () => {
-        clearTimeout(rt);
-        rt = setTimeout(() => {
-          buildMosaic();
-          setRunways();
-        }, 300);
-      });
 
       /* ══════════ SET HEIGHTS ══════════ */
       const sHero = document.getElementById("sectionHero");
@@ -1728,7 +1723,23 @@
         sHero.style.height = Math.round(vh * 4) + "px";
       }
       setRunways();
-      window.addEventListener("resize", setRunways);
+
+      // Mobile browsers fire `resize` when the URL/toolbar shows or hides while
+      // scrolling — height changes but width does not. Reacting to that would
+      // rebuild the mosaic and resize the hero runway, jumping the whole page.
+      // Only respond to resizes where the WIDTH actually changes (real window
+      // resize / orientation change), and ignore height-only toolbar toggles.
+      let rt;
+      let lastW = innerWidth;
+      window.addEventListener("resize", () => {
+        if (innerWidth === lastW) return; // height-only (toolbar) change → ignore
+        lastW = innerWidth;
+        clearTimeout(rt);
+        rt = setTimeout(() => {
+          buildMosaic();
+          setRunways();
+        }, 300);
+      });
 
       const ht = [0, 1].map((i) => document.getElementById("ht" + i));
       const ctaL1 = document.getElementById("ctaL1");
