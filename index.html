@@ -168,6 +168,33 @@
         height: 42px;
         display: block;
       }
+      #header .right {
+        display: flex;
+        align-items: center;
+      }
+      .video-thumb.header-video {
+        flex: none;
+        width: auto;
+        height: 64px;
+        aspect-ratio: auto;
+        border-radius: 8px;
+        box-shadow:
+          0 10px 20px rgba(0, 0, 0, 0.08),
+          0 3px 4px rgba(0, 0, 0, 0.08);
+      }
+      .video-thumb.header-video video {
+        position: relative;
+        inset: auto;
+        width: auto;
+        height: 100%;
+      }
+      .video-thumb.header-video svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 20px;
+      }
       /* #header .right {
         display: flex;
         flex-direction: row;
@@ -1139,7 +1166,7 @@
   </head>
   <body>
     <nav class="nav">
-      <div class="nav-logo">$799</div>
+      <div class="nav-logo">$499</div>
       <a href="https://buy.stripe.com/6oU6or1qn2IUaMT3qGenS01" class="nav-btn"
         >Register</a
       >
@@ -1176,13 +1203,31 @@
           />
         </svg>
       </div>
-      <!--
       <div class="right">
-        <a href="https://buy.stripe.com/6oU6or1qn2IUaMT3qGenS01">
-          <span class="reg">Register</span>
-        </a>
+        <div
+          class="video-thumb header-video"
+          data-video="CwYWFCiIbzg"
+          role="button"
+          tabindex="0"
+          aria-label="Play the 2026 intro video"
+        >
+          <video loop autoplay muted playsinline>
+            <source src="images/2026-intro-video-thumb.mp4" type="video/mp4" />
+          </video>
+          <svg
+            width="59"
+            height="63"
+            viewBox="0 0 59 63"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M55.7695 26.2322C59.957 28.5022 59.957 34.5119 55.7695 36.7819L8.85943 62.2115C4.86157 64.3787 -2.8624e-06 61.4841 -2.66363e-06 56.9366L-4.40499e-07 6.07743C-2.41722e-07 1.52995 4.86158 -1.36458 8.85944 0.802628L55.7695 26.2322Z"
+              fill="currentColor"
+            />
+          </svg>
+        </div>
       </div>
-      -->
     </header>
 
     <div class="main-content">
