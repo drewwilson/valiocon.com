@@ -774,6 +774,7 @@
       .speaker-card-tba {
         background-color: rgba(230, 227, 223, 0.5);
         background-image: none;
+        aspect-ratio: inherit;
       }
       .speaker-card-tba:hover {
         clip-path: inset(8px round 8px);
@@ -794,6 +795,15 @@
         .speaker-card-tba .speaker-meta {
           position: relative;
         }
+      }
+
+      /* to when odd */
+      .speaker-card-tba {
+        aspect-ratio: inherit;
+        grid-column: 1 / -1;
+      }
+      .speaker-card-tba .speaker-meta {
+        position: relative;
       }
 
       /* ══════════ LOCATION ══════════ */
