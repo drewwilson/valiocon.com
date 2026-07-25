@@ -41,6 +41,7 @@
         --black: #202021;
         --white: #f7f4ef;
         --accent: #325aed;
+        --accent-rgb: 50, 90, 237;
       }
       html {
         overflow-x: clip;
@@ -1081,6 +1082,160 @@
         padding: 0 24px;
         line-height: 1.5;
       }
+      /* ========= SCHEDULE ========== */
+
+      #schedule {
+        display: flex;
+        flex-direction: column;
+        color: var(--accent);
+        padding: 200px 0 100px 0;
+      }
+
+      #schedule h3 {
+        font-family: "Instrument Serif", Georgia, serif;
+        font-size: clamp(64px, 8vw, 110px);
+        font-weight: 400;
+        line-height: 1em;
+        letter-spacing: -0.04em;
+        text-align: center;
+      }
+
+      .schedule-cards {
+        display: flex;
+        margin-top: 80px;
+        width: 100%;
+        overflow-x: auto;
+      }
+
+      .schedule-cards-inner {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 40px;
+        padding: 20px 50px;
+        width: fit-content;
+      }
+
+      .schedule-card {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        width: 470px;
+        border-radius: 10px;
+        border: solid 1.5px var(--accent);
+        outline: 6px solid rgba(var(--accent-rgb), 0.04);
+      }
+
+      .schedule-card-title {
+        display: flex;
+        justify-content: center;
+        font-size: 20px;
+        font-weight: 500;
+        text-align: center;
+        padding-bottom: 20px;
+        border-bottom: solid 1.5px rgba(var(--accent-rgb), 0.1);
+      }
+
+      .schedule-card-items {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+        font-weight: 500;
+      }
+
+      .schedule-card-items li {
+        display: flex;
+        flex-direction: column;
+        padding: 5px 0;
+        justify-content: space-between;
+        gap: 6px;
+      }
+
+      #schedule .schedule-card-items p {
+        text-align: left;
+        font-size: 12px;
+        color: rgba(var(--accent-rgb), 0.5);
+      }
+
+      .schedule-card-item-meta {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .schedule-card-items figure {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        border-radius: 2px;
+        overflow: hidden;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      .schedule-card-items figure img {
+        width: 24px;
+      }
+
+      .schedule-card-item-left,
+      .schedule-card-item-right {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        text-align: left;
+      }
+
+      .schedule-card-item-right {
+        text-align: right;
+      }
+
+      .schedule-card-panel-people {
+        display: flex;
+        gap: 10px;
+      }
+
+      .schedule-card-panel-people figure {
+        display: flex;
+      }
+
+      .schedule-giveaway {
+        padding: 8px;
+        border-radius: 4px;
+        background-color: rgba(var(--accent-rgb), 0.08);
+      }
+
+      @media only screen and (max-width: 600px) {
+        #schedule {
+          padding: 120px 0 80px 0;
+        }
+        .schedule-cards {
+          overflow-x: initial;
+        }
+        .schedule-cards-inner {
+          flex-wrap: wrap;
+          gap: 60px;
+          padding: 0 30px;
+          width: 100%;
+        }
+        .schedule-card {
+          width: 100%;
+        }
+      }
+
+      @media only screen and (max-width: 420px) {
+        .schedule-card {
+          width: 100%;
+          border-left: none;
+          border-right: none;
+          border-radius: 0;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
       /* ══════════ FOOTER ══════════ */
       footer {
         position: relative;
@@ -1596,6 +1751,443 @@
           </div>
         </div>
         <div id="cardSpacer" style="height: 200vh"></div>
+      </div>
+    </div>
+
+    <div id="schedule">
+      <h3>Schedule</h3>
+      <a name="schedule"></a>
+
+      <div class="schedule-cards">
+        <div class="schedule-cards-inner">
+          <div class="schedule-card">
+            <div class="schedule-card-title">Wednesday, Sep. 16th</div>
+            <ul class="schedule-card-items">
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <span>🍵 Matcha & registration</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>8:15am - 8:50am</time>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <span>👋 Welcome</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>8:50am - 9:00am</time>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <figure>
+                      <img src="/images/speakers/full/ridd_design.jpg" />
+                    </figure>
+                    <span>Michael Riddering</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>9:00am - 9:30am</time>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <figure>
+                      <img src="/images/speakers/full/graceongrid.jpg" />
+                    </figure>
+                    <span>Grace Walker</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>9:30am - 10:00am</time>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="schedule-giveaway">🎁 Giveaway</div>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <figure>
+                      <img src="/images/speakers/full/aweiland.jpg" />
+                    </figure>
+                    <span>Andreas Weiland</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>10:15am - 10:45am</time>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <figure>
+                      <img src="/images/speakers/full/notorioususb.jpg" />
+                    </figure>
+                    <span>Brian Benitez</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>10:45am - 11:15am</time>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <span>🥙 Afternoon break</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>11:30pm - 1:00pm</time>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <figure>
+                      <img src="/images/speakers/gennyxdavila.jpg" />
+                    </figure>
+                    <span>Genny Dee</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>1:00pm - 1:30pm</time>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="schedule-giveaway">🎁 Giveaway</div>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <span>Panel: The future of product design</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>1:45pm - 2:45pm</time>
+                  </span>
+                </div>
+                <p>A discussion about the future of design and product.</p>
+                <div class="schedule-card-panel-people">
+                  <figure>
+                    <img src="/images/speakers/full/maheen_sohail.jpg" />
+                  </figure>
+                  <figure>
+                    <img src="/images/avatars/drewwilson.jpg" />
+                  </figure>
+                  <figure></figure>
+                  <figure></figure>
+                </div>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <span>Kickoff bonfire with s'mores</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>6pm - 8pm</time>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="schedule-card">
+            <div class="schedule-card-title">Thursday, Sep. 17th</div>
+            <ul class="schedule-card-items">
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <span>🍵 Matcha & hang time</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>8:15am - 8:50am</time>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <span>👋 Good morning</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>8:50am - 9:00am</time>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <figure>
+                      <img src="/images/speakers/full/willlenzen.jpg" />
+                    </figure>
+                    <span>Will Lenzen</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>9:00am - 9:30am</time>
+                  </span>
+                </div>
+                <p>Build like Spielberg</p>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <figure>
+                      <img src="/images/speakers/full/reijowrites.jpg" />
+                    </figure>
+                    <span>Reijo Palmiste</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>9:30am - 10:00am</time>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="schedule-giveaway">🎁 Giveaway</div>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <figure>
+                      <img src="/images/speakers/full/eschadiol.jpg" />
+                    </figure>
+                    <span>Escha</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>10:15am - 10:45am</time>
+                  </span>
+                </div>
+                <p>The Impostor</p>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <figure>
+                      <img src="/images/speakers/full/notorioususb.jpg" />
+                    </figure>
+                    <span>Jeff Broderick</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>10:45am - 11:15am</time>
+                  </span>
+                </div>
+                <p>Re-imagining vector</p>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <span>🥙 Afternoon break</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>11:30am - 1:00pm</time>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <figure>
+                      <img src="/images/speakers/full/danhollick.jpg" />
+                    </figure>
+                    <span>Dan Hollick</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>1:00pm - 1:30pm</time>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="schedule-giveaway">🎁 Giveaway</div>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <span>Panel: Design tools</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>1:45pm - 2:45pm</time>
+                  </span>
+                </div>
+                <p>
+                  A discussion with the founders building today's design tools
+                </p>
+                <div class="schedule-card-panel-people">
+                  <figure>
+                    <img src="/images/speakers/full/gabriellahach.jpg" />
+                  </figure>
+                  <figure>
+                    <img src="/images/speakers/full/aibek_design.jpg" />
+                  </figure>
+                  <figure>
+                    <img src="/images/speakers/full/tomkrcha.jpg" />
+                  </figure>
+                  <figure>
+                    <img src="/images/speakers/full/stephenhaney.jpg" />
+                  </figure>
+                  <figure>
+                    <img src="/images/avatars/drewwilson.jpg" />
+                  </figure>
+                </div>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <span>Free time</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>3:00pm onward</time>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="schedule-card">
+            <div class="schedule-card-title">Friday, Sep. 18th</div>
+            <ul class="schedule-card-items">
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <span>🍵 Matcha & hang time</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>8:15am - 8:50am</time>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <span>👋 Good morning</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>8:50am - 9:00am</time>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <figure>
+                      <img src="/images/speakers/full/floguo.jpg" />
+                    </figure>
+                    <span>Flora Guo</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>9:00am - 9:30am</time>
+                  </span>
+                </div>
+                <p>Designing Without a Map: Lessons from a Founding Designer</p>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <figure>
+                      <img src="/images/speakers/full/wesleybancroft.jpg" />
+                    </figure>
+                    <span>Wes Bancroft</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>9:30am - 10:00am</time>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="schedule-giveaway">🎁 Giveaway</div>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <figure>
+                      <img src="/images/speakers/full/martinleblanc.jpg" />
+                    </figure>
+                    <span>Martin LeBlanc</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>10:15am - 10:45am</time>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <figure>
+                      <img src="/images/avatars/drewwilson.jpg" />
+                    </figure>
+                    <span>Drew Wilson</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>10:45am - 11:15am</time>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <span>🥙 Afternoon break</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>11:30am - 1:00pm</time>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <figure>
+                      <img src="/images/speakers/full/aibek_design.jpg" />
+                    </figure>
+                    <span>Aibek Yegemberdin</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>1:00pm - 1:30pm</time>
+                  </span>
+                </div>
+                <p>Ideas worth seeing: Ideation in the Age of AI</p>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <figure>
+                      <img src="/images/speakers/full/saturday.jpg" />
+                    </figure>
+                    <span>Mackey Saturday</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>1:30pm - 2:00pm</time>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <span>Panel: TBA</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>2:00pm - 3:00pm</time>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="schedule-giveaway">🎁 Giveaway</div>
+              </li>
+              <li>
+                <div class="schedule-card-item-meta">
+                  <span class="schedule-card-item-left">
+                    <span>✌️ Closing</span>
+                  </span>
+                  <span class="schedule-card-item-right">
+                    <time>3:00pm</time>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
 
