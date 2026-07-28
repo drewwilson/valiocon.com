@@ -2625,12 +2625,24 @@
           twitter: "wesleybancroft",
           title: "Brand Designer at Lunour",
         },
+        {
+          name: "Alex Danilowicz",
+          twitter: "alexdanilowicz",
+          title: "Co-founder at Magic Patterns",
+        },
+        {
+          name: "Michael Novia",
+          linkedin: "mnovia",
+          title: "Creative Director at National Design Studio",
+        },
       ];
       speakers.sort(() => Math.random() - 0.5);
       speakers.forEach((s) => {
         const a = document.createElement("a");
         a.className = "speaker-card";
-        a.href = `https://x.com/${s.twitter}`;
+        a.href = s.linkedin
+          ? `https://www.linkedin.com/in/${s.twitter}`
+          : `https://x.com/${s.twitter}`;
         a.target = "_blank";
         a.rel = "noopener";
         a.style.backgroundImage = `url('/images/speakers/full/${s.twitter}.jpg')`;
